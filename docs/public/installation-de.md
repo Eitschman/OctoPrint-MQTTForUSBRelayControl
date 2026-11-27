@@ -1,10 +1,10 @@
 # Installation und Konfiguration
 
-Dies ist eine unveröffentlichte Entwicklungsversion. Der Projektinhaber bestätigt den
-erfolgreichen Betrieb auf seiner realen Hardware. Vor einer öffentlichen Veröffentlichung
-stehen menschliches Review und die vollständige Dokumentation des formalen
-Hardware-Testplans aus. AGPL-3.0-or-later und Maintainer Eitschman sind freigegeben. Automatische Tests dürfen niemals
-auf eine produktive Instanz zeigen.
+Die veröffentlichte Beta ist `0.1.0b1`; die stabile Version `0.1.0` wird vorbereitet.
+Der Projektinhaber bestätigt menschliche Prüfung, erfolgreichen Betrieb auf echter
+Hardware und die erfolgreiche Installation aus der öffentlichen Beta-URL.
+Lizenz: AGPL-3.0-or-later. Maintainer: Eitschman. Automatische Tests verwenden
+isolierte synthetische Hardware und dürfen niemals auf eine produktive Instanz zeigen.
 
 Voraussetzungen: Python 3.11+, eine unterstützte OctoPrint-Installation, USB Relay
 Control 1.0.0 und OctoPrint-MQTT 0.8.19 oder 0.8.20. Zuerst Kanäle im Originalplugin
@@ -18,10 +18,15 @@ verändert keine fremden Einstellungen. Broker-ACLs und Verschlüsselung entspre
 der bestehenden Installation konfigurieren: Frische berechtigte Befehle können reale
 Hardware schalten.
 
-Ein lokal geprüftes Wheel mit dem Python der OctoPrint-Umgebung installieren und
-OctoPrint neu starten. Downloadadresse, Installationsschritte und Hinweise zur tatsächlichen
-Release-Verfügbarkeit stehen im [Beta-Leitfaden](beta-guide.md).
-Keine ZIP-Datei des privaten gesamten Arbeitsverzeichnisses installieren oder verteilen.
+In OctoPrint **Einstellungen → Plugin Manager → Mehr … → … von URL** öffnen.
+Die genaue Archivadresse aus dem [Beta-Leitfaden](beta-guide.md) einfügen,
+installieren und OctoPrint neu starten. Vorhandene Companion-Einstellungen bleiben
+bei einem Update erhalten. Danach die installierte Version im Plugin Manager prüfen.
+Vor Updates die OctoPrint-Sicherung verwenden und die zugehörigen Release Notes lesen.
+Stabile Versionen erst installieren, wenn sie auf der
+[Release-Seite](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases) stehen.
+Lokal geprüfte Wheels mit dem Python der OctoPrint-Umgebung installieren und ebenfalls
+neu starten. Keine ZIP-Datei des privaten gesamten Arbeitsverzeichnisses installieren oder verteilen.
 
 Unter Einstellungen → MQTT for USB Relay Control die Integration aktivieren und jeden
 gewünschten Kanal separat freigeben. Switch, Light und Fan bieten ausschließlich

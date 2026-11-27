@@ -1,10 +1,11 @@
 # Installation and configuration
 
-This guide applies to beta `0.1.0b1`; check the [beta guide](beta-guide.md) for
-release availability. The owner confirms human review
-and successful installation and testing on real hardware. The owner has approved AGPL-3.0-or-later and maintainer Eitschman.
-Detailed H01–H09 results are not claimed. Only install an archive listed on the releases page.
-Do not install it on a production printer as part of the automated tests.
+The published beta is `0.1.0b1`. Follow the [beta installation guide](beta-guide.md)
+for the currently available tag URL. Stable version `0.1.0` is being prepared; install
+it only once it appears on the [releases page](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases).
+The owner confirms human review, real-hardware use and successful installation from
+the published beta URL. Automated tests use isolated synthetic hardware.
+License: AGPL-3.0-or-later. Maintainer: Eitschman.
 
 ## Prerequisites
 
@@ -19,19 +20,22 @@ discovery are blocked and a prerequisite error appears. Retained Last Will is us
 for bootstrapping when connection happened before binding. Authorize access to MQTT
 command topics at the broker; a fresh authorized message can operate hardware.
 
-## Local package
+## Installation
 
-Once the local build has passed its content checks, install its wheel using the
-OctoPrint environment's Python and restart OctoPrint. A wheel from this working tree
-is a licensed development artifact; an approved public release is still pending. Never install the project's
-private working directory or a ZIP containing local configuration.
+In OctoPrint, open Settings → Plugin Manager → Get More → from URL and paste the
+exact archive URL from the [beta guide](beta-guide.md), then install and restart
+OctoPrint. Existing companion settings are preserved when upgrading. Confirm the
+installed version in Plugin Manager. Use the OctoPrint backup facility before an
+upgrade, and read the release notes for the selected version.
+
+For a reviewed local wheel, use the Python environment that runs OctoPrint:
 
 ```sh
 python -m pip install /path/to/approved-local-build.whl
 ```
 
-See the [beta guide](beta-guide.md) for the planned tag archive and installation
-steps. The repository is public; the beta archive becomes available after publication.
+Restart OctoPrint after installation. Never install the project's private working
+directory or an archive containing local configuration.
 
 ## Settings
 

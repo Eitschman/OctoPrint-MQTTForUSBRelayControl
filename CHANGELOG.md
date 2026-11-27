@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0 — prepared, publication pending
+
+- Prepare the first stable release after owner-confirmed successful installation
+  from the public beta URL and real-hardware use. No relay behavior changed since
+  0.1.0b1; this release finalizes version metadata and documentation.
+- Stable builds exclude prereleases through the normal OctoPrint update checker.
+  Verify migration from a beta to stable and exclusion of a newer beta.
+- Correct obsolete development-only installation wording and prepare the complete
+  official registry submission bundle. Registration remains pending.
+
 ## 0.1.0b1 — beta
 
 - Prepare the first public beta with the approved Eitschman repository, release

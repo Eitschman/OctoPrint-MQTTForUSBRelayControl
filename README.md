@@ -3,10 +3,12 @@
 An event-driven OctoPrint companion that exposes the relays configured by
 USB Relay Control through the existing OctoPrint-MQTT connection.
 
-**Beta version: `0.1.0b1`.**
+**Stable release candidate: `0.1.0`.**
+The published beta is `0.1.0b1`; stable publication requires final approval.
 Published downloads appear on the [releases page](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases).
 The owner confirms human review and successful installation and testing on real hardware.
-See the [beta guide](docs/public/beta-guide.md) and [release notes](docs/public/release-notes-0.1.0b1.md).
+See the [beta guide](docs/public/beta-guide.md), [beta release notes](docs/public/release-notes-0.1.0b1.md)
+and [planned 0.1.0 release notes](docs/public/release-notes-0.1.0.md).
 Licensed under [AGPL-3.0-or-later](LICENSE). Maintainer: Eitschman.
 Official OctoPrint Plugin Repository registration is pending.
 

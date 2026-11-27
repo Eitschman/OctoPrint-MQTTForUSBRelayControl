@@ -85,7 +85,7 @@ def test_v09_upstream_handles_unreachable_and_incomplete_release_response(monkey
         github_release._get_latest_release("synthetic", "synthetic", "python")
 
 
-def test_approved_beta_repository_uses_actual_octoprint_release_selection(monkeypatch):
+def test_approved_repository_uses_actual_octoprint_release_selection(monkeypatch):
     from octoprint.plugins.softwareupdate import version_checks
 
     from octoprint_mqttforusbrelaycontrol.plugin import MQTTForUSBRelayControlPlugin
@@ -96,7 +96,7 @@ def test_approved_beta_repository_uses_actual_octoprint_release_selection(monkey
     assert configuration["repo"] == "OctoPrint-MQTTForUSBRelayControl"
     assert configuration["force_base"] is False
     assert APPROVED_RELEASE_SOURCE["prerelease"] is Version(configuration["current"]).is_prerelease
-    configuration["prerelease"] = True
+    configuration.update(prerelease=True, current="0.1.0b1")
     response = Mock()
     response.json.return_value = [
         dict(name=version, tag_name=version, html_url="https://example.org/release",
@@ -114,3 +114,26 @@ def test_approved_beta_repository_uses_actual_octoprint_release_selection(monkey
     information, current = github_release.get_latest(IDENTIFIER, configuration)
     assert information["remote"]["value"] == "0.0.9"
     assert not current
+
+    # A beta installation can advance to the stable tag.
+    response.json.return_value.append(
+        dict(name="0.1.0", tag_name="0.1.0", html_url="https://example.org/release",
+             draft=False, prerelease=False, published_at="2026-11-27T00:00:00Z",
+             target_commitish="main")
+    )
+    configuration.update(prerelease=True, current="0.1.0b1")
+    information, current = github_release.get_latest(IDENTIFIER, configuration)
+    assert information["remote"]["value"] == "0.1.0"
+    assert not current
+
+    # A stable installation excludes a newer beta using its actual update configuration.
+    response.json.return_value.append(
+        dict(name="0.1.1b1", tag_name="0.1.1b1", html_url="https://example.org/release",
+             draft=False, prerelease=True, published_at="2026-11-27T00:00:00Z",
+             target_commitish="main")
+    )
+    configuration = MQTTForUSBRelayControlPlugin().get_update_information()[IDENTIFIER]
+    assert configuration["prerelease"] is False
+    information, current = github_release.get_latest(IDENTIFIER, configuration)
+    assert information["remote"]["value"] == "0.1.0"
+    assert current

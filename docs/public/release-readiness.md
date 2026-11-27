@@ -8,6 +8,11 @@ AGPL-3.0-or-later and maintainer Eitschman are approved.
 `92953db96a0888a95de20fdadf6f17ddf6a24929`. Stable release and official registration
 remain pending.
 
+The owner confirms that installation from the public beta URL works perfectly.
+This is owner feedback, not an external compatibility survey.
+Stable candidate `0.1.0` is being prepared with [release notes](release-notes-0.1.0.md);
+closing the beta and publishing stable still require approval.
+
 The published beta is `0.1.0b1`. The [beta guide](beta-guide.md) and
 [release notes](release-notes-0.1.0b1.md) describe its archive and limitations.
 Run `uv run python tools/check_release_readiness.py --stage beta --evidence <local-evidence.json>`
@@ -42,7 +47,7 @@ configuration reconstruction and uninstall. Stop immediately on an unintended ou
 Never include credentials, complete server configurations or unredacted logs in feedback.
 Use the compatibility and bug issue templates in the public repository.
 
-Seven synthetic-environment screenshots and a proposed featured image are included
+Seven synthetic-environment screenshots and the approved featured image are included
 in the [gallery](screenshots.md). They show English light/dark settings, German,
 compact layout, diagnostics and actual Home Assistant test device/entity pages.
 The gallery records their capture dates and scope. They do not demonstrate every
