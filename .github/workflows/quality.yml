@@ -128,7 +128,10 @@ jobs:
           path: artifacts/official-registry
           persist-credentials: false
       - name: Add project listing to the isolated official registry
-        run: cp extras/mqttforusbrelaycontrol.md artifacts/official-registry/_plugins/mqttforusbrelaycontrol.md
+        run: |
+          cp extras/mqttforusbrelaycontrol.md artifacts/official-registry/_plugins/mqttforusbrelaycontrol.md
+          mkdir -p artifacts/official-registry/assets/img/plugins/mqttforusbrelaycontrol
+          cp extras/assets/img/plugins/mqttforusbrelaycontrol/*.png artifacts/official-registry/assets/img/plugins/mqttforusbrelaycontrol/
       - name: Refresh official registry video thumbnails
         working-directory: artifacts/official-registry
         run: bash .github/scripts/fetch_yt_preview

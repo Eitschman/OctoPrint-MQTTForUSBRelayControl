@@ -19,7 +19,8 @@ der bestehenden Installation konfigurieren: Frische berechtigte Befehle können 
 Hardware schalten.
 
 Ein lokal geprüftes Wheel mit dem Python der OctoPrint-Umgebung installieren und
-OctoPrint neu starten. Es gibt noch keine freigegebene öffentliche Downloadadresse.
+OctoPrint neu starten. Downloadadresse, Installationsschritte und Hinweise zur tatsächlichen
+Release-Verfügbarkeit stehen im [Beta-Leitfaden](beta-guide.md).
 Keine ZIP-Datei des privaten gesamten Arbeitsverzeichnisses installieren oder verteilen.
 
 Unter Einstellungen → MQTT for USB Relay Control die Integration aktivieren und jeden

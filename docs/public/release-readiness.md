@@ -1,19 +1,22 @@
 # Release readiness and beta procedure
 
-The project owner reports successful use of this development build on real hardware.
-A complete H01–H09 result record is still pending. The private source repository is
-available to its collaborators; public distribution has not been approved.
-The owner has approved AGPL-3.0-or-later and public maintainer Eitschman; package
-and registry metadata reflect those decisions. Successful tests do not authorize publication.
-Run `uv run python tools/check_release_readiness.py`; its current nonzero result is
-intentional. The local approval-evidence JSON must use explicit booleans for license,
-identity, human review, hardware tests, beta completion, advisory review and publication
-authorization. It must identify the version, maintainer and actual homepage/source/archive.
-The command checks recorded prerequisites; a human must verify their evidence and links.
+The owner confirms human review and successful installation and testing on real
+hardware. Detailed H01–H09 results and an independent audit are not claimed. The
+repository is public; GitHub private vulnerability reporting is enabled. License
+AGPL-3.0-or-later and maintainer Eitschman are approved. Release publication is pending.
+
+The locally prepared candidate is `0.1.0b1`. The [beta guide](beta-guide.md) and
+[release notes](release-notes-0.1.0b1.md) describe the planned archive and limitations.
+Run `uv run python tools/check_release_readiness.py --stage beta --evidence <local-evidence.json>`
+against the actual local approval record. Publication requires explicit approval.
+The default `--stage stable` additionally requires completion of the beta. A first
+beta cannot require its own completion before publication. Both stages retain human,
+hardware, advisory and publication checks; neither accepts a development snapshot.
+The command checks recorded booleans and metadata; it does not manufacture evidence.
 
 Before release, verify the approved license and identities, review all internal API hooks,
 resolve or explicitly assess dependency advisories, run the complete portable suite,
-perform the separately authorized hardware plan and inspect clean actual screenshots.
+record the actual scope of human/hardware evidence and inspect clean actual screenshots.
 Rebuild and inspect wheel, sdist and curated ZIP after final changes. Record SHA-256,
 version, source provenance, dependency inventory, checks and remaining limitations.
 The current CI contains no public release job. Security reports are retained as
@@ -33,26 +36,24 @@ active mode and channel, and compare requested state, readback and the physical 
 Exercise startup, both directions, retained replay, broker outage/reconnect, HA birth,
 configuration reconstruction and uninstall. Stop immediately on an unintended output.
 Never include credentials, complete server configurations or unredacted logs in feedback.
-Use the compatibility and bug issue templates once an actual approved repository exists.
+Use the compatibility and bug issue templates in the public repository.
 
-Required screenshot subjects are: the overall settings page; recognized relay identity;
-switch/light/fan selection; MQTT, frontend compatibility and LWT diagnostics; the actual
-HA device; the HA entities for all three domains; and state agreement after both HA and
-original OctoPrint actions. Narrow-layout and explicit read-failure captures supplement
-these subjects. Capture actual rendered UI with synthetic data, inspect every image
-and provide descriptive English alt text. Local settings and actual HA device/entity
-captures exist. The complete approved seven-image release set and formal H01–H09
-result record remain separate release gates. The owner's successful hardware use is
-recorded in the development report; synthetic HID tests provide software evidence.
+Seven synthetic-environment screenshots and a proposed featured image are included
+in the [gallery](screenshots.md). They show English light/dark settings, German,
+compact layout, diagnostics and actual Home Assistant test device/entity pages.
+The gallery records their capture dates and scope. They do not demonstrate every
+entity type or physical output. The owner confirms real-hardware installation/testing;
+detailed H01–H09 records are not claimed or substituted with synthetic results.
 
 ## Updates and retirement
 
 Keep the single version source and changelog synchronized. Development, alpha, beta,
 RC and stable versions follow PEP 440 ordering; stable selection excludes prereleases.
-The update hook is inactive until an approved source is compiled into `updates.py`.
+The update hook is configured for the approved public Eitschman repository.
 Its source factory accepts only the companion repository name and a validated owner,
 and constructs the corresponding archive URL. It performs no network requests itself.
-Test installed OctoPrint release selection and offline responses before enabling it.
+Installed OctoPrint release selection, stable/beta filtering and offline responses are tested.
+Verify the real published tag and archive after publication.
 
 For each later update repeat security, compatibility, migration, artifact and rollback
 checks; preserve the original registry registration date. Document supported versions,

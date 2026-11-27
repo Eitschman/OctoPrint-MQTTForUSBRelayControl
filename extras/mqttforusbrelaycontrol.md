@@ -9,6 +9,29 @@ date: 2026-11-27
 homepage: https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl
 source: https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl
 archive: https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/archive/refs/tags/0.1.0.zip
+featuredimage: /assets/img/plugins/mqttforusbrelaycontrol/settings-light.png
+screenshots:
+  - url: /assets/img/plugins/mqttforusbrelaycontrol/settings-light.png
+    alt: English settings in a light host theme
+    caption: English settings in a light host theme
+  - url: /assets/img/plugins/mqttforusbrelaycontrol/settings-dark.png
+    alt: English settings in a dark host theme
+    caption: English settings in a dark host theme
+  - url: /assets/img/plugins/mqttforusbrelaycontrol/settings-german.png
+    alt: German settings
+    caption: German settings
+  - url: /assets/img/plugins/mqttforusbrelaycontrol/settings-compact.png
+    alt: Compact settings layout
+    caption: Compact settings layout
+  - url: /assets/img/plugins/mqttforusbrelaycontrol/diagnostics.png
+    alt: Runtime and dependency diagnostics
+    caption: Runtime and dependency diagnostics
+  - url: /assets/img/plugins/mqttforusbrelaycontrol/ha-device.png
+    alt: Synthetic Home Assistant device and relay control
+    caption: Synthetic Home Assistant device and relay control
+  - url: /assets/img/plugins/mqttforusbrelaycontrol/ha-entities.png
+    alt: Synthetic Home Assistant entity listing
+    caption: Synthetic Home Assistant entity listing
 attributes:
   - ai-developed
 tags:
@@ -41,7 +64,8 @@ broker authentication, topic permissions and TLS in OctoPrint-MQTT for your netw
 use TLS with certificate verification for a remote broker. This companion does not
 read or store broker credentials and sends no tracking or analytics.
 
-The project owner reports successful use on real hardware. Automated tests use
+The owner confirms human review and successful installation and testing on real
+hardware. Screenshots show isolated synthetic data. Automated tests use
 synthetic hardware and loopback services; they do not certify a hardware model.
 
 See the [installation guide](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/blob/main/docs/public/installation.md),

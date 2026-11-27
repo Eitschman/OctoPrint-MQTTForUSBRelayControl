@@ -32,6 +32,12 @@ PRIVATE_PARTS = {
 }
 PRIVATE_MARKER = b"PRIVATE_" + b"DEVELOPMENT_CANARY"
 PUBLIC_DIRECTORIES = {"octoprint_mqttforusbrelaycontrol", "tests", "tools", ".github"}
+REGISTRY_IMAGES = {
+    "settings-light.png", "settings-dark.png", "settings-german.png",
+    "settings-compact.png", "diagnostics.png", "ha-device.png", "ha-entities.png",
+}
+REGISTRY_IMAGE_DIRECTORY = "extras/assets/img/plugins/mqttforusbrelaycontrol"
+
 PUBLIC_FILES = {
     "extras/mqttforusbrelaycontrol.md",
     "docs/api-inventory.md",
@@ -73,6 +79,8 @@ REQUIRED_ASSETS = {
 def public_source_path(name):
     path = PurePosixPath(name)
     if name in PUBLIC_FILES:
+        return True
+    if path.parent.as_posix() == REGISTRY_IMAGE_DIRECTORY and path.name in REGISTRY_IMAGES:
         return True
     if path.parts and path.parts[0] in PUBLIC_DIRECTORIES:
         return not any(part in PRIVATE_PARTS for part in path.parts)

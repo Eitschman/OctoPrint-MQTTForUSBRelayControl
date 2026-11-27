@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
 import { requireCredentials } from "../browser_config";
+import { capturePanel } from "./appearance";
 
 test("UI04 actual read failure is Unknown with an explicit diagnostic", async ({
   page,
@@ -30,7 +31,9 @@ test("UI04 actual read failure is Unknown with an explicit diagnostic", async ({
   await expect(panel.getByText("Off", { exact: true })).toHaveCount(0);
   await expect(page.locator("#settings_dialog")).toHaveCSS("opacity", "1");
   await mkdir("artifacts/browser/screenshots", { recursive: true });
-  await panel.screenshot({
-    path: "artifacts/browser/screenshots/read-failure.png",
-  });
+  await capturePanel(
+    page,
+    panel,
+    "artifacts/browser/screenshots/read-failure.png",
+  );
 });

@@ -130,7 +130,7 @@ def test_admin_api_checks_permission_and_actions(monkeypatch):
         plugin.runtime.worker.request.assert_called_once_with("resync")
         assert plugin.on_api_command("frontend", {"compatible": False}).json["accepted"]
     assert plugin.is_api_protected() and plugin.is_api_adminonly()
-    assert plugin.get_update_information() == {}
+    assert plugin.get_update_information()["mqttforusbrelaycontrol"]["user"] == "Eitschman"
     assert plugin.is_template_autoescaped()
 
 

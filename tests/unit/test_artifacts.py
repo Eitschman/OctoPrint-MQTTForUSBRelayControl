@@ -112,3 +112,13 @@ def test_wheel_cannot_omit_or_change_the_approved_license(
             archive.writestr("companion.dist-info/licenses/LICENSE", "Synthetic test license")
     with pytest.raises(ValueError, match=message):
         check_package(path)
+
+
+def test_registry_images_use_an_explicit_public_allowlist():
+    from tools.check_artifact import REGISTRY_IMAGE_DIRECTORY, REGISTRY_IMAGES
+
+    assert len(REGISTRY_IMAGES) == 7
+    for name in REGISTRY_IMAGES:
+        assert public_source_path(f"{REGISTRY_IMAGE_DIRECTORY}/{name}")
+    for name in ("private.png", "config.yaml", "settings-light.png.bak", "nested/settings-light.png"):
+        assert not public_source_path(f"{REGISTRY_IMAGE_DIRECTORY}/{name}")

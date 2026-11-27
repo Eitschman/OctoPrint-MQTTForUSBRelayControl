@@ -83,3 +83,34 @@ def test_v09_upstream_handles_unreachable_and_incomplete_release_response(monkey
     )
     with pytest.raises(NetworkError):
         github_release._get_latest_release("synthetic", "synthetic", "python")
+
+
+def test_approved_beta_repository_uses_actual_octoprint_release_selection(monkeypatch):
+    from octoprint.plugins.softwareupdate import version_checks
+
+    from octoprint_mqttforusbrelaycontrol.plugin import MQTTForUSBRelayControlPlugin
+    from octoprint_mqttforusbrelaycontrol.updates import APPROVED_RELEASE_SOURCE
+
+    configuration = MQTTForUSBRelayControlPlugin().get_update_information()[IDENTIFIER]
+    assert configuration["user"] == "Eitschman"
+    assert configuration["repo"] == "OctoPrint-MQTTForUSBRelayControl"
+    assert configuration["force_base"] is False
+    assert APPROVED_RELEASE_SOURCE["prerelease"] is Version(configuration["current"]).is_prerelease
+    configuration["prerelease"] = True
+    response = Mock()
+    response.json.return_value = [
+        dict(name=version, tag_name=version, html_url="https://example.org/release",
+             draft=False, prerelease=Version(version).is_prerelease,
+             published_at="2026-11-27T00:00:00Z", target_commitish="main")
+        for version in ("0.0.9", "0.1.0b1", "0.1.0b2")
+    ]
+    monkeypatch.setattr(github_release.requests, "get", Mock(return_value=response))
+    monkeypatch.setattr(version_checks, "check_github_apiresponse", lambda *args: None)
+    monkeypatch.setattr(version_checks, "check_github_ratelimit", lambda *args: None)
+    information, current = github_release.get_latest(IDENTIFIER, configuration)
+    assert information["remote"]["value"] == "0.1.0b2"
+    assert not current
+    configuration.update(prerelease=False, current="0.0.8")
+    information, current = github_release.get_latest(IDENTIFIER, configuration)
+    assert information["remote"]["value"] == "0.0.9"
+    assert not current

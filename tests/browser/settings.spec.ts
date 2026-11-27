@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import { execFileSync } from "node:child_process";
 import { mkdir } from "node:fs/promises";
 import { requireCredentials } from "../browser_config";
-import { checkAppearance } from "./appearance";
+import { capturePanel, checkAppearance } from "./appearance";
 
 test("UI01 UI02 UI06 UI07 UI08 settings and original relay bridge", async ({
   page,
@@ -85,6 +85,12 @@ test("UI01 UI02 UI06 UI07 UI08 settings and original relay bridge", async ({
       }),
     )
     .toBe("on");
+  await mkdir("artifacts/browser/screenshots", { recursive: true });
+  await expect(page.locator("#settings_dialog")).toHaveCSS("opacity", "1");
+  await panel.getByLabel(text.enable, { exact: true }).scrollIntoViewIfNeeded();
+  await test.step("Capture the initial settings overview", async () => {
+    await checkAppearance(page, panel, `${testInfo.project.name}-overview`);
+  });
   const name = panel.getByLabel(text.name, { exact: true });
   await name.fill("Unsaved test name");
   await expect(name).toHaveValue("Unsaved test name");
@@ -124,9 +130,11 @@ test("UI01 UI02 UI06 UI07 UI08 settings and original relay bridge", async ({
   await panel.locator("summary").click();
   await panel.scrollIntoViewIfNeeded();
   await mkdir("artifacts/browser/screenshots", { recursive: true });
-  await panel.screenshot({
-    path: `artifacts/browser/screenshots/settings-${testInfo.project.name}.png`,
-  });
+  await capturePanel(
+    page,
+    panel,
+    `artifacts/browser/screenshots/settings-${testInfo.project.name}.png`,
+  );
   await page
     .locator("#settings_dialog")
     .locator('[data-test-id="settings-close-button"]')

@@ -21,3 +21,5 @@ recursive-include tests *.ts
 recursive-include .github *.yml *.md
 
 include LICENSE extras/mqttforusbrelaycontrol.md
+
+recursive-include extras/assets/img/plugins/mqttforusbrelaycontrol *.png

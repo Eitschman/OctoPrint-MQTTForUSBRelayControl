@@ -40,9 +40,10 @@ is modified. CI performs no Pages deployment, registry submission or public rele
 
 ## Host dependency findings
 
-The separate OctoPrint dependency security workflow audits the entire resolved test
-environment on pushes, pull requests, a weekly schedule and manual requests. It
-remains strict: no ignored advisories, severity filters or `continue-on-error`.
+The separate plugin security workflow scans runtime code and compares regular host
+installations before/after adding the companion on pushes, pull requests, weekly and
+on demand. Additional known findings and incomplete scans fail; inherited findings
+remain visible. No ignored advisories, severity filters or `continue-on-error` are used.
 Known OctoPrint dependency findings remain unresolved. Passing plugin quality or
 registry checks does not certify that the host is free of vulnerabilities. The
 owner must assess these findings before recommending a deployment or release.
@@ -54,12 +55,14 @@ The template currently targets the planned `0.1.0` release archive. That tag and
 public archive do not exist yet; schema validation does not verify URL availability.
 Before submission, publish the separately approved release, verify the exact archive
 URL without authentication, and set the actual first-registration date. Keep that
-date unchanged on later registry updates. Prepare and review the real screenshot
-bundle and update any image references before copying the entry to the official
-repository's `_plugins` directory.
+date unchanged on later registry updates. Seven reviewed synthetic-environment screenshots are prepared under
+`extras/assets/img/plugins/mqttforusbrelaycontrol/`. Copy that directory to the
+registry's `assets/img/plugins/mqttforusbrelaycontrol/` together with the listing
+under `_plugins`. The quality workflow checks this exact bundle with the official
+validator and site build; do not submit a listing without its images.
 
-The source repository is still private. It must become publicly readable before
-registration. The human maintainer must understand and maintain the code; passing
+The source repository is public. GitHub private vulnerability reporting is enabled.
+The owner confirms human review and successful real-hardware installation/testing. The human maintainer must understand and maintain the code; passing
 automation does not establish that review or guarantee acceptance by OctoPrint.
 The remaining project release checks are in [release readiness](release-readiness.md).
 

@@ -208,5 +208,5 @@ class MQTTForUSBRelayControlPlugin(
         return flask.jsonify({"accepted": True})
 
     def get_update_information(self):
-        # No public repository or release source has been approved yet.
+        # Beta installations follow prereleases; stable installations exclude them.
         return update_information(APPROVED_RELEASE_SOURCE)

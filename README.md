@@ -3,10 +3,12 @@
 An event-driven OctoPrint companion that exposes the relays configured by
 USB Relay Control through the existing OctoPrint-MQTT connection.
 
-**Development version. The project owner reports successful use on real hardware.**
-The full manual test plan remains to be documented; no public release is available yet.
+**Beta version: `0.1.0b1`.**
+Published downloads appear on the [releases page](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases).
+The owner confirms human review and successful installation and testing on real hardware.
+See the [beta guide](docs/public/beta-guide.md) and [release notes](docs/public/release-notes-0.1.0b1.md).
 Licensed under [AGPL-3.0-or-later](LICENSE). Maintainer: Eitschman.
-The initial public release and official registration are still pending.
+Official OctoPrint Plugin Repository registration is pending.
 
 The companion uses existing relay objects and MQTT helpers. It never opens USB
 or a second MQTT connection, polls hardware, changes the original plugin on disk,
@@ -43,6 +45,7 @@ Do not point integration tests at an existing printer or Home Assistant instance
 - [Portable development and tests](docs/public/development.md)
 - [Authorized hardware test plan](docs/public/manual-test-plan.md) · [Development report](docs/public/development-report.md)
 - [Contributing](CONTRIBUTING.md), [support](SUPPORT.md), [security](SECURITY.md), [changelog](CHANGELOG.md)
+- [Screenshots](docs/public/screenshots.md) · [Beta guide](docs/public/beta-guide.md)
 - [Upstream notices](THIRD_PARTY_NOTICES.md)
 
 Expose individual channels as binary switches, lights or fans. Integration starts
@@ -55,9 +58,10 @@ refresh state. Arbitrary untouched hardware faults or external state changes may
 undetected. A filesystem clone must receive a confirmed new offline instance identity
 before MQTT use. See the installation guide for safe cleanup and uninstall behavior.
 
-Development is AI-assisted. Human review and completion of the formal real-device
-test plan are release gates, alongside a published release archive and beta approval.
-There are no approved public release artifacts or automatic update URLs yet.
+Development is AI-assisted. The owner has confirmed human review and real-hardware
+installation/testing; detailed case-by-case results are not claimed. The update hook
+points to this public repository and uses normal OctoPrint release checks. Install
+only a tag listed on the releases page; branch snapshots are development sources.
 
 ## Architecture and prerequisites
 

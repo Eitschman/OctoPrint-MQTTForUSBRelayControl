@@ -1,5 +1,24 @@
 import { expect, type Locator, type Page } from "@playwright/test";
 
+/** Capture the rendered viewport without resizing a fixed OctoPrint modal. */
+export async function capturePanel(page: Page, panel: Locator, path: string) {
+  const box = await panel.boundingBox();
+  const viewport = page.viewportSize();
+  if (!box || !viewport)
+    throw new Error("The visible settings viewport is unavailable");
+  const x = Math.max(0, box.x);
+  const y = Math.max(0, box.y);
+  const width = Math.min(viewport.width, box.x + box.width) - x;
+  const height = Math.min(viewport.height, box.y + box.height) - y;
+  expect(width).toBeGreaterThan(300);
+  expect(height).toBeGreaterThan(300);
+  await page.screenshot({
+    path,
+    clip: { x, y, width, height },
+    animations: "disabled",
+  });
+}
+
 /** Exercise host theme inheritance independently of the operating system theme. */
 export async function checkAppearance(
   page: Page,
@@ -43,9 +62,11 @@ export async function checkAppearance(
             "background-color",
             dark ? "rgb(98, 103, 115)" : "rgb(255, 255, 255)",
           );
-        await panel.screenshot({
-          path: `artifacts/browser/screenshots/settings-${name}-${theme}-advanced.png`,
-        });
+        await capturePanel(
+          page,
+          panel,
+          `artifacts/browser/screenshots/settings-${name}-${theme}-advanced.png`,
+        );
       } finally {
         await style.evaluate((element) =>
           element.parentNode?.removeChild(element),

@@ -1,8 +1,9 @@
 # Installation and configuration
 
-This is an unreleased development build. The project owner reports successful use on
-real hardware. The owner has approved AGPL-3.0-or-later and maintainer Eitschman.
-Human review and completion of the formal hardware test plan remain release checks.
+This guide applies to beta `0.1.0b1`; check the [beta guide](beta-guide.md) for
+release availability. The owner confirms human review
+and successful installation and testing on real hardware. The owner has approved AGPL-3.0-or-later and maintainer Eitschman.
+Detailed H01–H09 results are not claimed. Only install an archive listed on the releases page.
 Do not install it on a production printer as part of the automated tests.
 
 ## Prerequisites
@@ -29,8 +30,8 @@ private working directory or a ZIP containing local configuration.
 python -m pip install /path/to/approved-local-build.whl
 ```
 
-No public download URL is available yet. Release installation instructions must use
-the approved repository/archive URL when that approval exists.
+See the [beta guide](beta-guide.md) for the planned tag archive and installation
+steps. The repository is public; the beta archive becomes available after publication.
 
 ## Settings
 

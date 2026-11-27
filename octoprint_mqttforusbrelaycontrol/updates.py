@@ -1,11 +1,17 @@
-"""Inert-by-default update metadata for a future explicitly approved repository."""
+"""GitHub release metadata for the approved public companion repository."""
 
 import re
+
+from packaging.version import Version
 
 from ._version import __version__
 from .constants import IDENTIFIER
 
-APPROVED_RELEASE_SOURCE = None
+APPROVED_RELEASE_SOURCE = {
+    "owner": "Eitschman",
+    "repository": "OctoPrint-MQTTForUSBRelayControl",
+    "prerelease": Version(__version__).is_prerelease,
+}
 
 
 def update_information(source=None):

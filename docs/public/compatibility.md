@@ -47,3 +47,13 @@ This is practical hardware evidence. The hardware model, complete software versi
 and individual H01–H09 results have not yet been recorded, so no additional platform
 or device compatibility matrix is claimed. See the [manual test plan](manual-test-plan.md)
 for the remaining formal checks and the development report for schema and browser evidence.
+
+## First beta preparation
+
+The `0.1.0b1` candidate passes 297 backend/unit/contract cases on Python 3.11,
+including actual OctoPrint beta/stable update selection. All four browser journeys
+pass with the current candidate and fresh viewport screenshots. The owner confirms
+human review and successful installation/testing on real hardware; the exact tested
+hardware model and complete H01–H09 record were not supplied. No additional hardware
+coverage is inferred. Dependency comparisons cover both official OctoPrint 2.0.1
+and 2.0.2; they do not extend the full runtime compatibility matrix.

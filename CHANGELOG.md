@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0b1 — beta
+
+- Prepare the first public beta with the approved Eitschman repository, release
+  update checks, English/German installation guides and reviewed screenshots.
+- Beta installations follow GitHub prereleases; stable versions exclude them.
+- Separate first-beta readiness from stable readiness: completion of the beta is
+  required for a stable release, while all human and publication gates remain.
+- Record the owner-confirmed human review and successful installation and testing
+  on real hardware. Automated tests continue to use synthetic hardware.
+
 ## 0.1.0.dev5 — unreleased
 
 - Add complete runtime security scanning, fail-closed dependency comparisons against
