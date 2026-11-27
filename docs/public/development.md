@@ -1,6 +1,6 @@
 # Portable development and verification
 
-Install Python 3.9+ and uv from their public distributions, plus Node.js 24+ and the
+Install Python 3.11+ and uv from their public distributions, plus Node.js 24+ and the
 pnpm version declared in package.json. No version-control initialization is necessary
 for any local command. `CHANGELOG.md`, versioned source archives and the development
 report provide a local release history until a repository is explicitly authorized.
@@ -31,9 +31,9 @@ uv run python tools/install_upstream.py --mqtt-version 0.8.20
 This uses pip with `--no-deps` to avoid installing a USB driver. The locked development
 group supplies the needed OctoPrint/MQTT dependencies. Repeat with 0.8.19 in a separate
 environment or replace the test MQTT package deliberately. Re-run the contract suite
-on both Python 3.9 and 3.13. A dependency sync may remove packages installed outside
+on both Python 3.11 and 3.13. A dependency sync may remove packages installed outside
 the lock; use an inexact sync deliberately when preserving installed test plugins.
-Run mypy with `--python-version 3.9` in the Python 3.9 environment and
+Run mypy with `--python-version 3.11` in the Python 3.11 environment and
 `--python-version 3.13` in the Python 3.13 environment. The latter contains dependency
 versions with newer syntax; the CI matrix checks both targets independently.
 

@@ -1,6 +1,6 @@
 # Development report
 
-Date: 2026-11-27. Initial snapshot: 0.1.0.dev0; current development build: 0.1.0.dev4.
+Date: 2026-11-27. Initial snapshot: 0.1.0.dev0; current development build: 0.1.0.dev5.
 This code was developed with AI assistance. The following software evidence does not
 substitute for independent human review or the complete physical-device test plan.
 
@@ -12,7 +12,28 @@ which use synthetic HID. A complete record of hardware/software versions and the
 individual H01–H09 observations remains pending; successful everyday use does not
 establish every fault, restart or recovery case in that plan.
 
-## Current dev4 evidence
+## Dev5 Python minimum change
+
+The minimum supported interpreter is now Python 3.11. Package and OctoPrint plugin
+metadata, the Python/MQTT matrix, registry fixture and installation checks use the
+same requirement. The lockfile no longer contains the Python 3.9 tooling branches.
+OctoPrint dependency constraints are unchanged; the remaining host advisories are
+still blocking. No host dependency has been forced or overridden. The earlier
+Python 3.9 results below apply to dev0–dev4 only.
+
+Actual local dev5 runs pass 248 unit/contract tests each on Python 3.11.15
+(MQTT 0.8.20) and Python 3.13.12 (MQTT 0.8.19), with 91.17% branch-inclusive
+coverage. Ruff and both matching mypy targets pass. The regular Python 3.11
+resolution still reports 14 advisory entries across Tornado and zeroconf.
+No advisory exception has been added. Four actual broker/service/authorization
+cases pass on Python 3.11. A fresh Python 3.11 environment also installs the wheel
+with official OctoPrint 2.0.2 through normal dependency resolution: `uv pip check`
+passes for all 80 installed packages, and the installed entry point loads outside
+the source tree. This is installation evidence, not a full 2.0.2 runtime contract.
+The archive verifier now checks dependency consistency before adding test-only
+upstream plugins, whose USB driver is intentionally replaced by synthetic HID.
+
+## Dev4 evidence before the Python minimum change
 
 The current core, pinned upstream contracts and test-service diagnostics pass 248 tests
 in every Python/MQTT matrix combination. The local Python 3.13 run has 91.12%
@@ -39,7 +60,8 @@ The initial baseline below remains historical dev0/dev1 evidence.
 The first remote runs exposed test-environment and fixture problems:
 
 - Mypy used a fixed Python 3.9 target with Python 3.13 dependencies containing newer
-  syntax. Each matrix job now selects its matching target; Python 3.9 remains checked.
+  syntax. Each matrix job now selects its matching target. The current minimum is
+  Python 3.11; the earlier Python 3.9 results below are historical evidence.
 - Ubuntu's AppArmor profile denied Mosquitto access to generated configurations.
   CI now places them inside the profile's permitted `conf.d` subtree, in disposable
   subdirectories, without disabling confinement or changing the system configuration.

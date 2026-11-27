@@ -5,7 +5,7 @@ technical messages and primary documentation. The UI defaults to English and inc
 German translations. Keep the companion small and readable; explain upstream internal
 contracts and test failure paths alongside changes.
 
-Use Python 3.9+, uv, Node.js and pnpm. Public tests and builds require no private tools,
+Use Python 3.11+, uv, Node.js and pnpm. Public tests and builds require no private tools,
 account, secrets service or development launcher. See [development](docs/public/development.md)
 and the [architecture decisions](docs/adr/0001-companion.md).
 

@@ -6,7 +6,7 @@ stehen Lizenz- und Identitätsfreigabe, menschliches Review und die vollständig
 Dokumentation des formalen Hardware-Testplans aus. Automatische Tests dürfen niemals
 auf eine produktive Instanz zeigen.
 
-Voraussetzungen: Python 3.9+, eine unterstützte OctoPrint-Installation, USB Relay
+Voraussetzungen: Python 3.11+, eine unterstützte OctoPrint-Installation, USB Relay
 Control 1.0.0 und OctoPrint-MQTT 0.8.19 oder 0.8.20. Zuerst Kanäle im Originalplugin
 konfigurieren und dessen normale Bedienung prüfen. Der Companion verwendet dieselben
 Relaisobjekte und die vorhandene MQTT-Verbindung; er installiert keinen USB-Treiber.

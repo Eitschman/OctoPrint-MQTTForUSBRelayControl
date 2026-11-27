@@ -1,7 +1,7 @@
 # Integration API inventory
 
 The initial contract targets OctoPrint 2.0.1, USB Relay Control 1.0.0 and
-OctoPrint-MQTT 0.8.19/0.8.20. Python 3.9 is the minimum product interpreter.
+OctoPrint-MQTT 0.8.19/0.8.20. Python 3.11 is the minimum product interpreter.
 The source revisions and SHA-256 checksums live in
 `tests/fixtures/upstream-manifest.json`. Preparation downloads them explicitly;
 normal unit tests never download code or connect to hardware.

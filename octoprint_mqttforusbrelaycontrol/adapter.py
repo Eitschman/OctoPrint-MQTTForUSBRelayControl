@@ -4,7 +4,6 @@ import functools
 import threading
 from contextlib import contextmanager
 from dataclasses import dataclass
-from typing import Optional
 
 from .operations import OperationMonitor
 
@@ -14,10 +13,10 @@ class Observation:
     relay_id: str
     generation: int
     epoch: int
-    target: Optional[bool]
-    actual: Optional[bool]
-    write_error: Optional[str] = None
-    read_error: Optional[str] = None
+    target: bool | None
+    actual: bool | None
+    write_error: str | None = None
+    read_error: str | None = None
     sequence: int = 0
 
     @property

@@ -7,9 +7,20 @@ and Home Assistant 2026.11.3 schemas are tested. Actual isolated HA runtime test
 verify moving an existing entity to the shared printer device and back, preserving
 its unique ID and the printer's metadata and unrelated entity.
 
-Python minimum: **3.9**. OctoPrint 2.0 warns that Python 3.9 is past upstream Python
-end of life; the user-selected minimum remains supported by this companion's local
-software tests. Prefer a maintained Python interpreter for deployment.
+Python minimum: **3.11**, starting with dev5. Python 3.9 and 3.10 are no longer
+supported. Earlier Python 3.9 results below are historical evidence for dev0–dev4,
+not compatibility claims for dev5. Raising the minimum does not resolve the
+[remaining OctoPrint dependency advisories](dependency-review.md).
+
+Dev5 local checks passed on Python 3.11.15 with MQTT 0.8.20 and Python 3.13.12
+with MQTT 0.8.19: 248 unit/contract tests on each interpreter, at least 91.17%
+branch-inclusive coverage, and matching mypy targets. The updated CI runs both
+MQTT versions on both interpreters. Service and archive checks are recorded in
+the development report. A separate regular wheel installation on official
+OctoPrint 2.0.2 passes dependency-consistency and installed-entry-point checks;
+this does not establish a full 2.0.2 runtime contract.
+
+The following table records the earlier dev0–dev4 integration evidence:
 
 | OctoPrint | Python | USB Relay Control | MQTT | Evidence |
 | --- | --- | --- | --- | --- |
@@ -18,7 +29,7 @@ software tests. Prefer a maintained Python interpreter for deployment.
 | 2.0.1 | 3.13.12 | 1.0.0 | 0.8.20 | Installed plugins + real loopback Mosquitto + synthetic HID passed |
 | 2.0.1 | 3.13.12 | 1.0.0 | 0.8.19 | Installed plugins + real loopback Mosquitto + synthetic HID passed |
 | 1.11.2 | 3.9 | 1.0.0 | 0.8.20 | Tested minimum: installed plugins + real broker + synthetic HID passed |
-| 2.0.2 | 3.9+ | 1.0.0 | 0.8.19/0.8.20 | Newer upstream version, not yet tested |
+| 2.0.2 | 3.11+ | 1.0.0 | 0.8.19/0.8.20 | Newer upstream version, not yet tested |
 
 On 2026-11-27, dev4 passed actual Chromium journeys in English, German and a compact
 viewport, plus a separate read-failure journey. Each project uses a fresh server and

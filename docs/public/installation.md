@@ -7,7 +7,7 @@ Do not install it on a production printer as part of the automated tests.
 
 ## Prerequisites
 
-Use Python 3.9 or later and a supported OctoPrint installation. Install USB Relay
+Use Python 3.11 or later and a supported OctoPrint installation. Install USB Relay
 Control 1.0.0 and OctoPrint-MQTT 0.8.19 or 0.8.20 first. Configure the original relay
 channels and verify their normal OctoPrint controls yourself. The companion reuses
 those objects; it supplies no USB driver or broker credentials.

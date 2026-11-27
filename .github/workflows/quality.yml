@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ['3.9', '3.13']
+        python: ['3.11', '3.13']
         mqtt: ['0.8.19', '0.8.20']
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
@@ -22,6 +22,7 @@ jobs:
           version: '0.10.11'
           python-version: ${{ matrix.python }}
       - run: uv sync --locked --group dev
+      - run: uv pip check
       - run: uv run python tools/prepare_upstream.py
       - run: uv run python tools/install_upstream.py --mqtt-version '${{ matrix.mqtt }}'
       - run: uv run ruff check octoprint_mqttforusbrelaycontrol tests tools
@@ -109,7 +110,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ['3.9', '3.13']
+        python: ['3.11', '3.13']
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:

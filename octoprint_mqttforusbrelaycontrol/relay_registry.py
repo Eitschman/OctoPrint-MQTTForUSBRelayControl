@@ -2,7 +2,7 @@
 
 import re
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Any
 from uuid import UUID
 
 
@@ -113,6 +113,6 @@ class RelayRegistry:
             if entry.relay is relay and (channel in (None, 0) or entry.channel == channel)
         ]
 
-    def current(self, identity: str, generation: int) -> Optional[RelayEntry]:
+    def current(self, identity: str, generation: int) -> RelayEntry | None:
         entry = self.entries.get(identity)
         return entry if entry and entry.generation == generation else None

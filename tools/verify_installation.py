@@ -81,11 +81,12 @@ def main():
                 harness,
                 environment,
             )
+            command([uv, "pip", "check", "--python", python], harness, environment)
             command(
                 [
                     python,
                     "-c",
-                    "from importlib.metadata import distribution; d=distribution('OctoPrint-MQTTForUSBRelayControl'); e=next(e for e in d.entry_points if e.group=='octoprint.plugin'); m=e.load(); m.__plugin_load__(); assert m.__plugin_pythoncompat__ == '>=3.9'; print('Installed entry point and assets are loadable')",
+                    "from importlib.metadata import distribution; d=distribution('OctoPrint-MQTTForUSBRelayControl'); e=next(e for e in d.entry_points if e.group=='octoprint.plugin'); m=e.load(); m.__plugin_load__(); assert m.__plugin_pythoncompat__ == '>=3.11'; print('Installed entry point and assets are loadable')",
                 ],
                 harness,
                 environment,
@@ -142,6 +143,7 @@ def main():
                 {
                     "artifact": artifact.name,
                     "installed": True,
+                    "dependency_check": True,
                     "entry_point": True,
                     "uninstalled": True,
                     "isolated_smoke": True,

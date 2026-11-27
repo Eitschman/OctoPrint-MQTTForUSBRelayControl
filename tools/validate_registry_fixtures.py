@@ -40,7 +40,7 @@ def run(validator):
             source="https://example.org/source",
             archive="https://example.org/archive.zip",
             attributes=["ai-developed"],
-            compatibility={"python": ">=3.9", "octoprint": [">=1.11.2"]},
+            compatibility={"python": ">=3.11", "octoprint": [">=1.11.2"]},
             screenshots=[
                 {"url": "/assets/img/plugins/synthetic/settings.png", "alt": "Synthetic fixture"}
             ],

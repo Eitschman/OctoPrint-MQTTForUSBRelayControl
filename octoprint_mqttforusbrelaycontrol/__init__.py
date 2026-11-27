@@ -6,7 +6,7 @@ from ._version import __version__
 
 __plugin_name__ = "MQTT for USB Relay Control"
 __plugin_version__ = __version__
-__plugin_pythoncompat__ = ">=3.9"
+__plugin_pythoncompat__ = ">=3.11"
 __plugin_implementation__: Any = None
 __plugin_hooks__: dict[str, Any] = {}
 

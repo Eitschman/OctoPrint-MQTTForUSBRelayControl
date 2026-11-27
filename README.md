@@ -18,7 +18,7 @@ queue. Reconnection reads current state instead of replaying a message history.
 
 ## Development
 
-Python 3.9 or later is required. The primary contract targets OctoPrint 2.0.1,
+Python 3.11 or later is required. The primary contract targets OctoPrint 2.0.1,
 USB Relay Control 1.0.0 and OctoPrint-MQTT 0.8.19 or 0.8.20.
 
 ```sh

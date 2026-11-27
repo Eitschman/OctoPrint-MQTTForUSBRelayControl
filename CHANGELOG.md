@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0.dev5 — unreleased
+
+- Require Python 3.11 or later in package metadata, OctoPrint compatibility,
+  development tools and CI. Python 3.9 and 3.10 are no longer supported.
+- Use current pytest and pip on every supported test interpreter. Existing
+  OctoPrint dependency advisory findings remain open and strictly checked.
+
 ## 0.1.0.dev4 — unreleased
 
 - Rotate reconciliation, commands and current-state publication fairly under load.

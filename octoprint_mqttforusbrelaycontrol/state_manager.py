@@ -4,7 +4,7 @@ import threading
 from collections import deque
 from dataclasses import asdict, dataclass, field
 from time import monotonic, time
-from typing import Any, Optional
+from typing import Any
 
 from .command_settings import validate_command_timing
 from .constants import COMMAND_MAX_AGE_SECONDS, COMMAND_MIN_INTERVAL_SECONDS, COMMAND_QUEUE_LIMIT
@@ -53,9 +53,9 @@ class StateManager:
         self.rejected = 0
         self.expired = 0
         self.overflows = 0
-        self.active_kind: Optional[str] = None
-        self.active_started: Optional[float] = None
-        self.last_duration: Optional[float] = None
+        self.active_kind: str | None = None
+        self.active_started: float | None = None
+        self.last_duration: float | None = None
 
     def configure_commands(self, max_age, min_interval):
         max_age = validate_command_timing("command_max_age", max_age)
