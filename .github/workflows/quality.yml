@@ -22,7 +22,7 @@ jobs:
       - run: uv run python tools/prepare_upstream.py
       - run: uv run python tools/install_upstream.py --mqtt-version '${{ matrix.mqtt }}'
       - run: uv run ruff check octoprint_mqttforusbrelaycontrol tests tools
-      - run: uv run mypy octoprint_mqttforusbrelaycontrol
+      - run: uv run mypy --python-version '${{ matrix.python }}' octoprint_mqttforusbrelaycontrol
       - run: uv run pytest tests/unit tests/integration/test_upstream_contracts.py --cov=octoprint_mqttforusbrelaycontrol --cov-fail-under=85
       - run: sudo apt-get update && sudo apt-get install -y mosquitto
       - run: RUN_SERVICE_TESTS=1 uv run pytest tests/integration/test_services.py tests/integration/test_authorization.py tests/integration/test_missing_hardware.py
@@ -85,6 +85,7 @@ jobs:
   advisories:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python: ['3.9', '3.13']
     steps:
