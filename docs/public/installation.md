@@ -1,8 +1,8 @@
 # Installation and configuration
 
 This is an unreleased development build. The project owner reports successful use on
-real hardware. License and public identity approval, human review and completion of
-the formal hardware test plan are still required before public release.
+real hardware. The owner has approved AGPL-3.0-or-later and maintainer Eitschman.
+Human review and completion of the formal hardware test plan remain release checks.
 Do not install it on a production printer as part of the automated tests.
 
 ## Prerequisites
@@ -22,7 +22,7 @@ command topics at the broker; a fresh authorized message can operate hardware.
 
 Once the local build has passed its content checks, install its wheel using the
 OctoPrint environment's Python and restart OctoPrint. A wheel from this working tree
-is a local test artifact, not a public licensed release. Never install the project's
+is a licensed development artifact; an approved public release is still pending. Never install the project's
 private working directory or a ZIP containing local configuration.
 
 ```sh

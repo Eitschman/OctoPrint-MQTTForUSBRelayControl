@@ -2,8 +2,8 @@
 
 Dies ist eine unveröffentlichte Entwicklungsversion. Der Projektinhaber bestätigt den
 erfolgreichen Betrieb auf seiner realen Hardware. Vor einer öffentlichen Veröffentlichung
-stehen Lizenz- und Identitätsfreigabe, menschliches Review und die vollständige
-Dokumentation des formalen Hardware-Testplans aus. Automatische Tests dürfen niemals
+stehen menschliches Review und die vollständige Dokumentation des formalen
+Hardware-Testplans aus. AGPL-3.0-or-later und Maintainer Eitschman sind freigegeben. Automatische Tests dürfen niemals
 auf eine produktive Instanz zeigen.
 
 Voraussetzungen: Python 3.11+, eine unterstützte OctoPrint-Installation, USB Relay

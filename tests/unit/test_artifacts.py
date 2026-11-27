@@ -88,3 +88,27 @@ def test_missing_asset_or_entry_point_is_rejected(tmp_path):
         archive.writestr("README.md", b"fixture")
     with pytest.raises(ValueError, match="assets"):
         check_package(tmp_path / "missing.zip")
+
+
+@pytest.mark.parametrize(
+    "expression,license_text,message",
+    [("MIT", True, "license expression"), ("AGPL-3.0-or-later", False, "license text")],
+)
+def test_wheel_cannot_omit_or_change_the_approved_license(
+    tmp_path, expression, license_text, message
+):
+    from tools.check_artifact import REQUIRED_ASSETS, check_package
+
+    path = tmp_path / "unlicensed.whl"
+    with zipfile.ZipFile(path, "w") as archive:
+        for asset in REQUIRED_ASSETS:
+            archive.writestr("octoprint_mqttforusbrelaycontrol/" + asset, b"fixture")
+        archive.writestr(
+            "companion.dist-info/entry_points.txt",
+            "[octoprint.plugin]\nmqttforusbrelaycontrol = octoprint_mqttforusbrelaycontrol\n",
+        )
+        archive.writestr("companion.dist-info/METADATA", f"License-Expression: {expression}\n")
+        if license_text:
+            archive.writestr("companion.dist-info/licenses/LICENSE", "Synthetic test license")
+    with pytest.raises(ValueError, match=message):
+        check_package(path)

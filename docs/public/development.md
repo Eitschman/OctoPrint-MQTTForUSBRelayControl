@@ -86,7 +86,8 @@ Wheels select the plugin package/assets; sdists select explicit source and test 
 Curated ZIP creation uses an independent allowlist. The archive gate rejects private
 paths, renamed private-content canaries, personal filesystem paths, key material and
 unsafe archive links. Ignore rules alone are insufficient. Builds are local test
-artifacts until license, identities, real URLs and release readiness are approved.
+artifacts until the release URLs and release readiness are approved. The owner has
+approved AGPL-3.0-or-later and maintainer Eitschman.
 
 A blocked upstream hardware call cannot be interrupted safely. Shutdown has a bounded
 worker join and reports that restart is required rather than pretending to cancel it.
@@ -104,13 +105,21 @@ UV_PROJECT_ENVIRONMENT=artifacts/octoprint uv run python tools/install_upstream.
 RUN_HA_TESTS=1 TEST_OCTOPRINT_PYTHON="$PWD/artifacts/octoprint/bin/python" artifacts/ha/bin/python -m pytest tests/ha
 # Optional: also capture actual disposable HA pages with the installed Chromium.
 RUN_HA_TESTS=1 RUN_HA_BROWSER_TESTS=1 TEST_OCTOPRINT_PYTHON="$PWD/artifacts/octoprint/bin/python" PLAYWRIGHT_BROWSERS_PATH=artifacts/browsers artifacts/ha/bin/python -m pytest tests/ha/test_full_stack.py
-uvx --python 3.13 --with python-frontmatter --with colorama --with voluptuous --with 'ruamel.yaml<0.18' --with packaging --with requests --with click python tools/validate_registry_fixtures.py --prepare
+uv run --no-project --python 3.11 python tools/validate_registry_fixtures.py --prepare-only
+uv venv .registry --python 3.11
+uv pip install --python .registry/bin/python -r artifacts/registry-validator/requirements.txt
+.registry/bin/python tools/validate_registry_fixtures.py
+.registry/bin/python tools/validate_registry_entry.py
 pnpm licenses list --json > artifacts/node-license-metadata.json
 uv run python tools/dependency_inventory.py artifacts/dependency-licenses.json --node-metadata artifacts/node-license-metadata.json
 ```
 
-The registry command checks synthetic fixtures against a checksummed official validator;
-it does not submit a listing. Missing-image existence also needs an independent check.
-Read the [dependency review](dependency-review.md): the strict advisory gate currently
-reports unresolved host baseline findings. `tools/check_release_readiness.py` deliberately
-fails while actual release approvals, license, URLs and evidence remain absent.
+The registry commands check both negative fixtures and the actual listing template
+against the checksummed, unmodified official validator and its own requirements.
+The quality workflow also builds the pinned official registry with our listing and
+validates JSON output, the Atom feed and the generated project page. This performs no
+submission or deployment. See [registry preparation](registry.md).
+
+Read the [dependency review](dependency-review.md): the dedicated strict security
+audit reports unresolved host baseline findings. `tools/check_release_readiness.py`
+still fails while actual publication approvals and release evidence remain absent.

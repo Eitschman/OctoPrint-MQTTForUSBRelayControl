@@ -22,6 +22,7 @@ def main():
             "tools",
             ".github",
             "docs",
+            "extras",
         }:
             continue
         if candidate.is_dir():

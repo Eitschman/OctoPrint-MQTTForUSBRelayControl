@@ -1,5 +1,10 @@
 {
-  "url": "https://raw.githubusercontent.com/OctoPrint/plugins.octoprint.org/gh-pages/.github/scripts/validate_front_matter.py",
+  "url": "https://raw.githubusercontent.com/OctoPrint/plugins.octoprint.org/95c543a6dda048df2a8edca7596e7549e0cb6fcb/.github/scripts/validate_front_matter.py",
   "sha256": "2e9efcb5ef6061d182f4566ad83ae78bcf18410a94904d9bd95609076ac15a8d",
-  "checked": "2026-11-26"
+  "checked": "2026-11-27",
+  "revision": "95c543a6dda048df2a8edca7596e7549e0cb6fcb",
+  "requirements": {
+    "url": "https://raw.githubusercontent.com/OctoPrint/plugins.octoprint.org/95c543a6dda048df2a8edca7596e7549e0cb6fcb/.github/scripts/requirements.txt",
+    "sha256": "aaa16617f5d63330457da809397946095d0ddcbc8d891e40baf4cea9ee7dd92e"
+  }
 }

@@ -30,7 +30,12 @@ Raising the companion's Python minimum makes newer packages available, but does 
 relax OctoPrint's requirements. No dependency overrides or patched host are used.
 No advisory was silently waived. A production recommendation and public release require
 human assessment of the current host version, reachable features, upstream fixes and
-supported interpreter. The strict advisory CI gate may fail until that is resolved.
+supported interpreter. The dedicated OctoPrint dependency security audit stays strict and may fail until
+that is resolved. It runs on every push and pull request, weekly and on demand.
+Plugin quality and official registry checks run independently; a green quality
+workflow is not a claim of a vulnerability-free host. No ignore list, severity filter
+or `continue-on-error` is used. The official registry PR checks validate listing
+metadata and site output; they do not require plugins to override host dependencies.
 
 Reproduce the audit against the actual isolated environment, not just top-level names:
 
@@ -42,5 +47,5 @@ pnpm audit --json
 Use the interpreter's actual site-packages path when it differs. Keep raw environment
 reports local and inspect them before sharing. Resolved Python and Node license metadata
 was inventoried separately; upstream metadata is not a legal compatibility approval.
-The exact AGPL recommendation and unresolved owner approval are in
+The approved companion license and upstream boundaries are in
 [third-party notices](../../THIRD_PARTY_NOTICES.md).

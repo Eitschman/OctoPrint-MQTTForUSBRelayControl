@@ -1,4 +1,4 @@
-# Third-party boundaries and license recommendation
+# Third-party boundaries and licenses
 
 The product does not bundle upstream implementation code. Explicit test preparation
 downloads checksum-pinned upstream sources into ignored local artifacts. Installed
@@ -18,15 +18,13 @@ Sources: [USB Relay Control](https://github.com/abudden/OctoPrint-USBRelayContro
 [Home Assistant](https://github.com/home-assistant/core),
 [PSU companion reference](https://github.com/oerkel47/OctoPrint-MQTT-for-PSUcontrol/tree/ff7c4efc386617ef517213d7fc63716ac415951c).
 
-AGPL-3.0-or-later is the proposed license for this companion, subject to the owner's
-explicit final approval and review of combined-work obligations. Interaction through
-helpers or instance wrappers is not presented as a blanket exemption from upstream
-license obligations. Copied upstream source is not included in product files or public
-release archives. If future changes copy or distribute such code, preserve notices
-and reassess compatibility and corresponding-source obligations first.
+The owner has approved AGPL-3.0-or-later for this companion's original code and
+Eitschman as its public maintainer. The complete license is included in [LICENSE](LICENSE),
+and the same SPDX expression appears in package and registry metadata.
 
-**No project license has been granted by this document.** The final LICENSE file,
-SPDX expression, public copyright attribution and release metadata remain approval
-gates. Do not publish or redistribute this development build as an approved release.
-The [GNU AGPL text](https://www.gnu.org/licenses/agpl-3.0.html) is the reference for the
-recommendation; this engineering note is not a legal determination.
+Interaction through helpers or instance wrappers is not presented as a blanket
+exemption from upstream license obligations. Copied upstream implementation code is
+not included in product files or public release archives. If future changes copy or
+distribute such code, preserve notices and reassess compatibility and
+corresponding-source obligations first. Upstream distributions retain their own
+licenses and notices. This engineering inventory is not a legal determination.

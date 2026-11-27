@@ -15,6 +15,7 @@
 /.env
 /artifacts/
 /.ha/
+/.registry/
 
 # Generated development and package files.
 __pycache__/

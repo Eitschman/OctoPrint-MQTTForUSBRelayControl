@@ -19,3 +19,5 @@ include docs/architecture.md docs/maintainer-guide.md docs/manual-test-plan.md d
 recursive-include docs/adr *.md
 recursive-include tests *.ts
 recursive-include .github *.yml *.md
+
+include LICENSE extras/mqttforusbrelaycontrol.md

@@ -9,7 +9,15 @@ readme = "README.md"
 dependencies = ["OctoPrint>=1.11.2"]
 classifiers = ["Framework :: OctoPrint", "Development Status :: 2 - Pre-Alpha", "Programming Language :: Python :: 3"]
 description = "Event-driven MQTT companion for OctoPrint USB Relay Control"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [{name = "Eitschman"}]
 requires-python = ">=3.11"
+
+[project.urls]
+Homepage = "https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl"
+Source = "https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl"
+Issues = "https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/issues"
 
 [dependency-groups]
 dev = [

@@ -17,8 +17,8 @@ establish every fault, restart or recovery case in that plan.
 The minimum supported interpreter is now Python 3.11. Package and OctoPrint plugin
 metadata, the Python/MQTT matrix, registry fixture and installation checks use the
 same requirement. The lockfile no longer contains the Python 3.9 tooling branches.
-OctoPrint dependency constraints are unchanged; the remaining host advisories are
-still blocking. No host dependency has been forced or overridden. The earlier
+OctoPrint dependency constraints are unchanged; the remaining host advisories
+remain unresolved and are reported in the dedicated strict security workflow. No host dependency has been forced or overridden. The earlier
 Python 3.9 results below apply to dev0–dev4 only.
 
 Actual local dev5 runs pass 248 unit/contract tests each on Python 3.11.15
@@ -121,7 +121,7 @@ and nine deliberately contaminated-archive counterchecks. Each format is install
 a fresh environment from public sources, its entry point loaded, an isolated server
 started with synthetic and missing hardware, and the plugin uninstalled. The installed
 suite has no product-source fallback and no private agent/configuration dependencies.
-Official registry-validator tests use checksummed synthetic fixtures and deliberate
+Historical registry-validator tests used checksummed synthetic fixtures and deliberate
 missing metadata/images. The actual project draft remains invalid until the owner
 approves identities, license and real project URLs.
 
@@ -144,7 +144,7 @@ additional distinct vulnerabilities. The Node audit reports no findings. See the
 [dependency review](dependency-review.md); no blanket risk acceptance is claimed.
 
 A complete physical H01–H09 result record, independent human code/privacy/license
-review, approved project license and public identities, actual update URLs, the
+review, actual public release/update URLs, the
 approved release image set, authorized beta and official registration remain open.
 The update hook is inactive
 without an approved source. The private source repository has been pushed and its
@@ -168,3 +168,20 @@ plugin independently retains cleanup callbacks and remains unchanged. A real loc
 broker/server counterprobe observes online before original-plugin disable, offline
 after disable, and retained offline on a fresh subscription. No physical hardware or
 productive instance is used, and no delivery guarantee is inferred.
+
+## Official registry preparation — 2026-11-27
+
+The owner approved AGPL-3.0-or-later and Eitschman as public maintainer. LICENSE,
+package metadata, plugin metadata and the actual registry template now agree.
+The actual template passes the unmodified official front-matter validator with
+zero failures and zero warnings, using its official requirements on Python 3.11.
+The validator and requirements are tied to official registry revision
+`95c543a6dda048df2a8edca7596e7549e0cb6fcb` and verified by SHA-256.
+Nine new regressions reject metadata drift and missing AI disclosure.
+
+The quality workflow includes both official front-matter checks and the full official
+Jekyll build with JSON/Atom/project-page validation. The full dependency audit moves
+to its own strict workflow, retaining push/PR execution and adding a weekly schedule.
+No dependencies are overridden and no advisory is ignored. This does not resolve
+OctoPrint's inherited advisory findings. Release archive availability, registration
+date, screenshots, human review and actual official acceptance remain separate checks.

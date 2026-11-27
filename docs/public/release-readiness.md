@@ -3,19 +3,24 @@
 The project owner reports successful use of this development build on real hardware.
 A complete H01–H09 result record is still pending. The private source repository is
 available to its collaborators; public distribution has not been approved.
-Successful tests do not grant a license, establish authorship or authorize publication.
+The owner has approved AGPL-3.0-or-later and public maintainer Eitschman; package
+and registry metadata reflect those decisions. Successful tests do not authorize publication.
 Run `uv run python tools/check_release_readiness.py`; its current nonzero result is
 intentional. The local approval-evidence JSON must use explicit booleans for license,
 identity, human review, hardware tests, beta completion, advisory review and publication
 authorization. It must identify the version, maintainer and actual homepage/source/archive.
 The command checks recorded prerequisites; a human must verify their evidence and links.
 
-Before release, approve the exact license and identities, review all internal API hooks,
+Before release, verify the approved license and identities, review all internal API hooks,
 resolve or explicitly assess dependency advisories, run the complete portable suite,
 perform the separately authorized hardware plan and inspect clean actual screenshots.
 Rebuild and inspect wheel, sdist and curated ZIP after final changes. Record SHA-256,
 version, source provenance, dependency inventory, checks and remaining limitations.
-The current CI contains no public upload or release job.
+The current CI contains no public upload or release job. The official registry checks
+and site build run in the quality workflow; full host dependency audits run strictly
+in their own workflow on pushes, pull requests, a weekly schedule and manual requests.
+That separation is not an advisory waiver or an official acceptance guarantee.
+See [registry preparation](registry.md) for the listing and remaining URL/date checks.
 
 ## Beta feedback
 

@@ -102,19 +102,32 @@ def main():
         help="Explicitly download the checksummed public validator",
     )
     parser.add_argument(
+        "--prepare-only",
+        action="store_true",
+        help="Download verified validator and requirements without running them",
+    )
+    parser.add_argument(
         "--validator",
         type=Path,
         default=ROOT / "artifacts/registry-validator/validate_front_matter.py",
     )
     arguments = parser.parse_args()
-    if arguments.prepare:
+    if arguments.prepare or arguments.prepare_only:
         contract = json.loads((ROOT / "tests/fixtures/registry-validator.json").read_text())
         arguments.validator.parent.mkdir(parents=True, exist_ok=True)
-        with urllib.request.urlopen(contract["url"], timeout=30) as response:
-            data = response.read()
-        if hashlib.sha256(data).hexdigest() != contract["sha256"]:
-            raise ValueError("The official validator checksum changed")
-        arguments.validator.write_bytes(data)
+        downloads = (
+            (contract, arguments.validator),
+            (contract["requirements"], arguments.validator.parent / "requirements.txt"),
+        )
+        for entry, destination in downloads:
+            with urllib.request.urlopen(entry["url"], timeout=30) as response:
+                data = response.read()
+            if hashlib.sha256(data).hexdigest() != entry["sha256"]:
+                raise ValueError("The official registry tool checksum changed")
+            destination.write_bytes(data)
+    if arguments.prepare_only:
+        print("Prepared checksummed official registry validator and requirements")
+        return
     run(arguments.validator)
 
 

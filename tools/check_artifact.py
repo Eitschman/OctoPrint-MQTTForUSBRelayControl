@@ -5,6 +5,7 @@ import io
 import re
 import tarfile
 import zipfile
+from email.parser import BytesParser
 from pathlib import Path, PurePosixPath
 
 PRIVATE_NAMES = {
@@ -24,6 +25,7 @@ PRIVATE_PARTS = {
     ".agents",
     ".venv",
     ".ha",
+    ".registry",
     "artifacts",
     "node_modules",
     "__pycache__",
@@ -31,6 +33,7 @@ PRIVATE_PARTS = {
 PRIVATE_MARKER = b"PRIVATE_" + b"DEVELOPMENT_CANARY"
 PUBLIC_DIRECTORIES = {"octoprint_mqttforusbrelaycontrol", "tests", "tools", ".github"}
 PUBLIC_FILES = {
+    "extras/mqttforusbrelaycontrol.md",
     "docs/api-inventory.md",
     "docs/architecture.md",
     "docs/maintainer-guide.md",
@@ -174,8 +177,21 @@ def check_package(path):
             or b"[octoprint.plugin]" not in entry_points[0]
         ):
             raise ValueError("The OctoPrint entry point is missing or inconsistent")
+        metadata = [
+            BytesParser().parsebytes(data)
+            for name, data in entries.items()
+            if name.endswith(".dist-info/METADATA")
+        ]
+        if len(metadata) != 1 or metadata[0].get("License-Expression") != "AGPL-3.0-or-later":
+            raise ValueError("The approved wheel license expression is missing or inconsistent")
+        if not any(name.endswith(".dist-info/licenses/LICENSE") for name in entries):
+            raise ValueError("The wheel license text is missing")
     elif not any(name.endswith("pyproject.toml") for name in entries):
         raise ValueError("Source archive is missing pyproject.toml")
+    else:
+        metadata = next(name for name in entries if name.endswith("pyproject.toml"))
+        if metadata.removesuffix("pyproject.toml") + "LICENSE" not in entries:
+            raise ValueError("Source archive is missing the project license")
     return check_archive(path)
 
 

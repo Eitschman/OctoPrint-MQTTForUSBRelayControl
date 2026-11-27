@@ -5,7 +5,8 @@ USB Relay Control through the existing OctoPrint-MQTT connection.
 
 **Development version. The project owner reports successful use on real hardware.**
 The full manual test plan remains to be documented; no public release is available yet.
-The project license, public maintainers and release URLs await owner approval.
+Licensed under [AGPL-3.0-or-later](LICENSE). Maintainer: Eitschman.
+The initial public release and official registration are still pending.
 
 The companion uses existing relay objects and MQTT helpers. It never opens USB
 or a second MQTT connection, polls hardware, changes the original plugin on disk,
@@ -42,7 +43,7 @@ Do not point integration tests at an existing printer or Home Assistant instance
 - [Portable development and tests](docs/public/development.md)
 - [Authorized hardware test plan](docs/public/manual-test-plan.md) · [Development report](docs/public/development-report.md)
 - [Contributing](CONTRIBUTING.md), [support](SUPPORT.md), [security](SECURITY.md), [changelog](CHANGELOG.md)
-- [License recommendation and upstream notices](THIRD_PARTY_NOTICES.md)
+- [Upstream notices](THIRD_PARTY_NOTICES.md)
 
 Expose individual channels as binary switches, lights or fans. Integration starts
 disabled; original configuration and hardware ownership remain with USB Relay Control.
@@ -55,8 +56,7 @@ undetected. A filesystem clone must receive a confirmed new offline instance ide
 before MQTT use. See the installation guide for safe cleanup and uninstall behavior.
 
 Development is AI-assisted. Human review and completion of the formal real-device
-test plan are release gates, alongside final license, public identity, repository URLs
-and beta approval.
+test plan are release gates, alongside a published release archive and beta approval.
 There are no approved public release artifacts or automatic update URLs yet.
 
 ## Architecture and prerequisites
@@ -120,4 +120,10 @@ disabled and remove old retained command payloads before enabling the channel.
 Read the [dependency review](docs/public/dependency-review.md) before considering any
 deployment: the fixed upstream test baseline has unresolved advisories. Functional
 compatibility is not a security endorsement. See [release readiness](docs/public/release-readiness.md)
-for remaining human, hardware, license, beta and publication gates.
+for remaining human, hardware, beta and publication gates.
+
+[Plugin quality and registry checks](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/workflows/quality.yml)
+run software tests and the official registry validator/site build. The separate
+[OctoPrint dependency security audit](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/workflows/dependency-audit.yml)
+remains strict and reports inherited host findings. A passing quality run does not
+mean those findings are resolved. See [registry preparation](docs/public/registry.md).

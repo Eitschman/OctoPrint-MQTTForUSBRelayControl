@@ -2,6 +2,11 @@
 
 ## 0.1.0.dev5 — unreleased
 
+- Adopt the owner-approved AGPL-3.0-or-later license and maintainer Eitschman.
+- Validate the actual registry template and full site with the unmodified official
+  OctoPrint registry tooling. Keep full host dependency audits in a separate strict
+  workflow; unresolved host findings remain visible and no dependencies are overridden.
+
 - Require Python 3.11 or later in package metadata, OctoPrint compatibility,
   development tools and CI. Python 3.9 and 3.10 are no longer supported.
 - Use current pytest and pip on every supported test interpreter. Existing

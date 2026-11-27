@@ -5,6 +5,9 @@ from typing import Any
 from ._version import __version__
 
 __plugin_name__ = "MQTT for USB Relay Control"
+__plugin_author__ = "Eitschman"
+__plugin_license__ = "AGPL-3.0-or-later"
+__plugin_url__ = "https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl"
 __plugin_version__ = __version__
 __plugin_pythoncompat__ = ">=3.11"
 __plugin_implementation__: Any = None
