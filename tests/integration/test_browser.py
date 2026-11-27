@@ -18,7 +18,8 @@ pytestmark = [
 ]
 
 
-def test_i01_browser_settings(tmp_path):
+@pytest.mark.parametrize("project", ["desktop", "desktop-de", "compact"])
+def test_i01_browser_settings(tmp_path, project):
     pnpm = shutil.which("pnpm")
     if not pnpm:
         raise RuntimeError("Install pnpm and the locked public browser dependencies")
@@ -60,7 +61,9 @@ def test_i01_browser_settings(tmp_path):
             TEST_BROKER_PORT=str(port),
             TEST_COMMAND_TOPIC=f"isolated/usbrelay/{instance_uuid}/16c0-05df/1/set",
         )
-        result = subprocess.run([pnpm, "test:browser"], cwd=ROOT, env=environment, timeout=160)
+        result = subprocess.run(
+            [pnpm, "test:browser", f"--project={project}"], cwd=ROOT, env=environment, timeout=160
+        )
         assert result.returncode == 0, "The browser suite failed; inspect its sanitized output"
 
 

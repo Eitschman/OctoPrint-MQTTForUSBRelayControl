@@ -33,6 +33,9 @@ group supplies the needed OctoPrint/MQTT dependencies. Repeat with 0.8.19 in a s
 environment or replace the test MQTT package deliberately. Re-run the contract suite
 on both Python 3.9 and 3.13. A dependency sync may remove packages installed outside
 the lock; use an inexact sync deliberately when preserving installed test plugins.
+Run mypy with `--python-version 3.9` in the Python 3.9 environment and
+`--python-version 3.13` in the Python 3.13 environment. The latter contains dependency
+versions with newer syntax; the CI matrix checks both targets independently.
 
 ## Disposable services and browser
 
@@ -41,6 +44,12 @@ manager, or provide its path through `MOSQUITTO_BINARY`. This is test-only. The
 fixtures create a new empty base directory, generate independent accounts/tokens,
 listen only on 127.0.0.1 and terminate their own subprocesses afterwards. They reject
 an existing non-empty base directory. No production target is accepted.
+On hosts that restrict broker configuration access, set `MOSQUITTO_CONFIG_DIRECTORY`
+to an empty test directory that Mosquitto may read and the test user may write.
+Each broker creates and removes its own configuration subdirectory there; logs remain
+in the test result directory. CI prepares a dedicated directory under `/etc/mosquitto`
+and selects the apt-installed executable explicitly. No system broker configuration
+is changed and no host confinement is disabled.
 
 ```sh
 RUN_SERVICE_TESTS=1 uv run pytest tests/integration/test_services.py tests/integration/test_authorization.py tests/integration/test_missing_hardware.py
@@ -53,6 +62,8 @@ The Python fixture passes `TEST_BASE_URL`, `TEST_USERNAME`, `TEST_PASSWORD`,
 The browser validates a plain loopback URL with an explicit port before authentication;
 missing credentials fail without printing values. Each test has an independent browser
 context. Tests never search personal credential stores or existing server configuration.
+Each browser project also gets a fresh server and broker, so saved settings from one
+language or viewport cannot become another project's starting state.
 The test publisher is a separate test-only MQTT client; the product has no MQTT client.
 No traces, request-body dumps, videos or authentication screenshots are captured.
 Screenshots contain synthetic settings, relay controls or disposable Home Assistant pages and remain local artifacts.

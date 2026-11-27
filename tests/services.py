@@ -6,6 +6,7 @@ import shutil
 import socket
 import subprocess
 import sys
+import tempfile
 import time
 from contextlib import contextmanager
 from pathlib import Path
@@ -43,17 +44,24 @@ def broker(directory, control=None):
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True)
     port = free_port()
-    configuration = directory / "mosquitto.conf"
-    configuration.write_text(
-        f"listener {port} 127.0.0.1\nallow_anonymous true\npersistence false\n", encoding="utf-8"
-    )
-    with (directory / "mosquitto.log").open("w") as log:
+    config_root = os.environ.get("MOSQUITTO_CONFIG_DIRECTORY") or directory
+    with (
+        tempfile.TemporaryDirectory(prefix="relay-broker-", dir=config_root) as config_directory,
+        (directory / "mosquitto.log").open("w") as log,
+    ):
+        configuration = Path(config_directory) / "mosquitto.conf"
+        configuration.write_text(
+            f"listener {port} 127.0.0.1\nallow_anonymous true\npersistence false\n",
+            encoding="utf-8",
+        )
         process = subprocess.Popen([str(binary), "-c", str(configuration)], stdout=log, stderr=log)
         try:
 
             def listening():
                 if process.poll() is not None:
-                    details = (directory / "mosquitto.log").read_text(encoding="utf-8", errors="replace")
+                    details = (directory / "mosquitto.log").read_text(
+                        encoding="utf-8", errors="replace"
+                    )
                     raise RuntimeError(
                         f"The isolated broker {binary} exited with code "
                         f"{process.returncode}: {details[-2000:]}"

@@ -4,6 +4,7 @@ permissions:
   contents: read
 env:
   MOSQUITTO_BINARY: /usr/sbin/mosquitto
+  MOSQUITTO_CONFIG_DIRECTORY: /etc/mosquitto/mqtt-relay-tests
 jobs:
   backend:
     runs-on: ubuntu-latest
@@ -26,11 +27,15 @@ jobs:
       - run: uv run ruff check octoprint_mqttforusbrelaycontrol tests tools
       - run: uv run mypy --python-version '${{ matrix.python }}' octoprint_mqttforusbrelaycontrol
       - run: uv run pytest tests/unit tests/integration/test_upstream_contracts.py --cov=octoprint_mqttforusbrelaycontrol --cov-fail-under=85
-      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - name: Prepare isolated broker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mosquitto
+          sudo install -d -m 0700 -o "$(id -u)" -g "$(id -g)" "$MOSQUITTO_CONFIG_DIRECTORY"
       - run: RUN_SERVICE_TESTS=1 uv run pytest tests/integration/test_services.py tests/integration/test_authorization.py tests/integration/test_missing_hardware.py
       - name: Diagnose broker confinement failures
         if: failure()
-        run: sudo journalctl --kernel --grep='apparmor="DENIED".*mosquitto' --no-pager --lines=10
+        run: sudo journalctl -k --grep='apparmor="DENIED".*mosquitto' --no-pager --lines=10
   browser:
     runs-on: ubuntu-latest
     steps:
@@ -50,7 +55,11 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test && pnpm typecheck && pnpm lint && pnpm format:check
       - run: pnpm audit
-      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - name: Prepare isolated broker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mosquitto
+          sudo install -d -m 0700 -o "$(id -u)" -g "$(id -g)" "$MOSQUITTO_CONFIG_DIRECTORY"
       - run: PLAYWRIGHT_BROWSERS_PATH=artifacts/browsers pnpm exec playwright install --with-deps chromium
       - run: RUN_BROWSER_TESTS=1 PLAYWRIGHT_BROWSERS_PATH=artifacts/browsers uv run pytest tests/integration/test_browser.py -s
   home-assistant:
@@ -67,7 +76,11 @@ jobs:
       - run: uv pip install --python .ha/bin/python homeassistant==2026.11.3 paho-mqtt==2.1.0 pytest==9.2.0
       - run: uv sync --locked --python 3.13 --group dev
       - run: uv run python tools/install_upstream.py --mqtt-version 0.8.20
-      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - name: Prepare isolated broker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mosquitto
+          sudo install -d -m 0700 -o "$(id -u)" -g "$(id -g)" "$MOSQUITTO_CONFIG_DIRECTORY"
       - run: RUN_HA_TESTS=1 TEST_OCTOPRINT_PYTHON="$PWD/.venv/bin/python" .ha/bin/python -m pytest tests/ha
   packaging:
     runs-on: ubuntu-latest
@@ -85,7 +98,11 @@ jobs:
       - run: uv run python tools/check_artifact.py artifacts/dist/*.whl artifacts/dist/*.tar.gz
       - run: uv run python tools/export_public_source.py artifacts/dist/local-source.zip
       - run: uv run python tools/verify_artifact_negatives.py artifacts/dist/*.whl artifacts/dist/*.tar.gz artifacts/dist/local-source.zip
-      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - name: Prepare isolated broker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mosquitto
+          sudo install -d -m 0700 -o "$(id -u)" -g "$(id -g)" "$MOSQUITTO_CONFIG_DIRECTORY"
       - run: uv run python tools/verify_installation.py --source artifacts/dist/local-source.zip --artifacts artifacts/dist/*.whl artifacts/dist/*.tar.gz artifacts/dist/local-source.zip
   advisories:
     runs-on: ubuntu-latest
