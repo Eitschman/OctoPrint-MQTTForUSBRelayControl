@@ -57,6 +57,8 @@ jobs:
         with:
           version: '0.10.11'
           python-version: ${{ matrix.python }}
+          # The isolated audit strips UV_* settings and does not populate this cache.
+          enable-cache: false
       - name: Audit the regular host installation before and after adding the companion
         run: python tools/security_audit.py --python '${{ matrix.python }}' --octoprint '${{ matrix.octoprint }}' --mqtt '${{ matrix.mqtt }}' --output artifacts/security/comparison
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
