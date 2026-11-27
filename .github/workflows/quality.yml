@@ -2,6 +2,8 @@ name: Local-equivalent quality checks
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
+env:
+  MOSQUITTO_BINARY: /usr/sbin/mosquitto
 jobs:
   backend:
     runs-on: ubuntu-latest
@@ -26,6 +28,9 @@ jobs:
       - run: uv run pytest tests/unit tests/integration/test_upstream_contracts.py --cov=octoprint_mqttforusbrelaycontrol --cov-fail-under=85
       - run: sudo apt-get update && sudo apt-get install -y mosquitto
       - run: RUN_SERVICE_TESTS=1 uv run pytest tests/integration/test_services.py tests/integration/test_authorization.py tests/integration/test_missing_hardware.py
+      - name: Diagnose broker confinement failures
+        if: failure()
+        run: sudo journalctl --kernel --grep='apparmor="DENIED".*mosquitto' --no-pager --lines=10
   browser:
     runs-on: ubuntu-latest
     steps:

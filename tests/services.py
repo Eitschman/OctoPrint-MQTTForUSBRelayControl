@@ -55,7 +55,8 @@ def broker(directory, control=None):
                 if process.poll() is not None:
                     details = (directory / "mosquitto.log").read_text(encoding="utf-8", errors="replace")
                     raise RuntimeError(
-                        f"The isolated broker exited with code {process.returncode}: {details[-2000:]}"
+                        f"The isolated broker {binary} exited with code "
+                        f"{process.returncode}: {details[-2000:]}"
                     )
                 with socket.create_connection(("127.0.0.1", port), timeout=0.2):
                     return True
