@@ -117,7 +117,7 @@ uv run python tools/dependency_inventory.py artifacts/dependency-licenses.json -
 The registry commands check both negative fixtures and the actual listing template
 against the checksummed, unmodified official validator and its own requirements.
 The quality workflow also builds the pinned official registry with our listing and
-validates JSON output, the Atom feed and the generated project page. This performs no
+validates JSON output, the RSS feed and the generated project page. This performs no
 submission or deployment. See [registry preparation](registry.md).
 
 Read the [dependency review](dependency-review.md): the dedicated strict security

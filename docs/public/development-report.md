@@ -180,7 +180,7 @@ The validator and requirements are tied to official registry revision
 Nine new regressions reject metadata drift and missing AI disclosure.
 
 The quality workflow includes both official front-matter checks and the full official
-Jekyll build with JSON/Atom/project-page validation. The full dependency audit moves
+Jekyll build with JSON/RSS/project-page validation. The full dependency audit moves
 to its own strict workflow, retaining push/PR execution and adding a weekly schedule.
 No dependencies are overridden and no advisory is ignored. This does not resolve
 OctoPrint's inherited advisory findings. Release archive availability, registration

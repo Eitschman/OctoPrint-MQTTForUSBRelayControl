@@ -13,8 +13,9 @@ def validate_site(directory):
         if not isinstance(documents[name], expected):
             raise ValueError(f"The generated {name} has an unexpected JSON type")
     feed = ET.parse(directory / "feed.xml")
-    if feed.getroot().tag != "{http://www.w3.org/2005/Atom}feed":
-        raise ValueError("The generated feed is not an Atom feed")
+    root = feed.getroot()
+    if root.tag != "rss" or root.get("version") != "2.0" or root.find("channel") is None:
+        raise ValueError("The generated feed is not an RSS 2.0 feed")
     entries = [
         entry for entry in documents["plugins.json"] if entry.get("id") == "mqttforusbrelaycontrol"
     ]
@@ -36,7 +37,7 @@ def main():
     parser.add_argument("directory", type=Path)
     arguments = parser.parse_args()
     validate_site(arguments.directory)
-    print("Official Jekyll output: JSON documents, Atom feed and project listing passed")
+    print("Official Jekyll output: JSON documents, RSS feed and project listing passed")
 
 
 if __name__ == "__main__":

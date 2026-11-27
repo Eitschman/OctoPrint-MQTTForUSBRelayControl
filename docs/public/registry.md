@@ -30,7 +30,7 @@ actual project template check.
 
 The same workflow checks out the full official registry at the pinned revision,
 adds our entry, validates its front matter, and runs its normal Ruby 3.4/Bundler
-Jekyll build. Generated `plugins.json`, `notices.json`, `search.json`, the Atom feed
+Jekyll build. Generated `plugins.json`, `notices.json`, `search.json`, the RSS feed
 and our plugin page are checked. JSON output must contain exactly one project entry
 with the approved metadata. No official source, Gemfile or dependency constraint
 is modified. CI performs no Pages deployment, registry submission or public release.
