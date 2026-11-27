@@ -1,8 +1,6 @@
 # Installation and configuration
 
-The published beta is `0.1.0b1`. Follow the [beta installation guide](beta-guide.md)
-for the currently available tag URL. Stable version `0.1.0` is being prepared; install
-it only once it appears on the [releases page](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases).
+The stable release is [0.1.0](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0).
 The owner confirms human review, real-hardware use and successful installation from
 the published beta URL. Automated tests use isolated synthetic hardware.
 License: AGPL-3.0-or-later. Maintainer: Eitschman.
@@ -23,10 +21,15 @@ command topics at the broker; a fresh authorized message can operate hardware.
 ## Installation
 
 In OctoPrint, open Settings → Plugin Manager → Get More → from URL and paste the
-exact archive URL from the [beta guide](beta-guide.md), then install and restart
-OctoPrint. Existing companion settings are preserved when upgrading. Confirm the
-installed version in Plugin Manager. Use the OctoPrint backup facility before an
-upgrade, and read the release notes for the selected version.
+following archive URL, then install and restart OctoPrint:
+
+```text
+https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/archive/refs/tags/0.1.0.zip
+```
+
+Confirm version **0.1.0** in Plugin Manager. Existing companion settings are preserved
+when upgrading. Use the OctoPrint backup facility before an upgrade, and read the
+release notes for the selected version.
 
 For a reviewed local wheel, use the Python environment that runs OctoPrint:
 

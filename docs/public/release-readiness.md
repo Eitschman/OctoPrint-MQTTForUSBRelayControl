@@ -5,15 +5,16 @@ hardware. Detailed H01–H09 results and an independent audit are not claimed. T
 repository is public; GitHub private vulnerability reporting is enabled. License
 AGPL-3.0-or-later and maintainer Eitschman are approved.
 [Beta 0.1.0b1](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0b1) was published on 2026-11-27 from approved commit
-`92953db96a0888a95de20fdadf6f17ddf6a24929`. Stable release and official registration
-remain pending.
+`92953db96a0888a95de20fdadf6f17ddf6a24929`. The owner subsequently approved completion
+of the beta and publication of [stable 0.1.0](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0).
+Official registration remains pending.
 
 The owner confirms that installation from the public beta URL works perfectly.
 This is owner feedback, not an external compatibility survey.
-Stable candidate `0.1.0` is being prepared with [release notes](release-notes-0.1.0.md);
-closing the beta and publishing stable still require approval.
+Stable `0.1.0` is documented in the [release notes](release-notes-0.1.0.md).
+Later releases require their own verification and approval.
 
-The published beta is `0.1.0b1`. The [beta guide](beta-guide.md) and
+The historical beta is `0.1.0b1`; new installations should use stable `0.1.0`. The [beta guide](beta-guide.md) and
 [release notes](release-notes-0.1.0b1.md) describe its archive and limitations.
 Run `uv run python tools/check_release_readiness.py --stage beta --evidence <local-evidence.json>`
 against the actual local approval record. Publication requires explicit approval.

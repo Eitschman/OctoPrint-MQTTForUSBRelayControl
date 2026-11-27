@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.1.0 — prepared, publication pending
+## 0.1.0 — 2026-11-27
 
-- Prepare the first stable release after owner-confirmed successful installation
+- Publish the first stable release after owner-confirmed successful installation
   from the public beta URL and real-hardware use. No relay behavior changed since
   0.1.0b1; this release finalizes version metadata and documentation.
 - Stable builds exclude prereleases through the normal OctoPrint update checker.

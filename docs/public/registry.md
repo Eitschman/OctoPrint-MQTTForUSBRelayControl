@@ -51,10 +51,9 @@ See the [dependency review](dependency-review.md).
 
 ## Final publication checks
 
-The template currently targets the planned `0.1.0` release archive. That tag and
-public archive do not exist yet; schema validation does not verify URL availability.
-Before submission, publish the separately approved release, verify the exact archive
-URL without authentication, and set the actual first-registration date. Keep that
+The template targets the approved stable `0.1.0` release archive. Schema validation
+does not verify URL availability. Before submission, verify the exact archive URL
+without authentication and set the actual first-registration date. Keep that
 date unchanged on later registry updates. Seven reviewed synthetic-environment screenshots are prepared under
 `extras/assets/img/plugins/mqttforusbrelaycontrol/`. Copy that directory to the
 registry's `assets/img/plugins/mqttforusbrelaycontrol/` together with the listing

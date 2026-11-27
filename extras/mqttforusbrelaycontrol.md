@@ -46,8 +46,8 @@ compatibility:
     - linux
 ---
 
-<!-- Registration draft. Publish the approved 0.1.0 release and verify the archive URL,
-registration date and screenshot bundle before submitting this file. -->
+<!-- Registration draft. Verify the approved stable archive URL, actual registration
+date and complete screenshot bundle before submitting this file. -->
 
 Expose USB Relay Control channels as Home Assistant MQTT switches, lights or fans.
 All three entity types provide binary on/off control.

@@ -1,6 +1,6 @@
 # Installation und Konfiguration
 
-Die veröffentlichte Beta ist `0.1.0b1`; die stabile Version `0.1.0` wird vorbereitet.
+Die stabile Version ist [0.1.0](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0).
 Der Projektinhaber bestätigt menschliche Prüfung, erfolgreichen Betrieb auf echter
 Hardware und die erfolgreiche Installation aus der öffentlichen Beta-URL.
 Lizenz: AGPL-3.0-or-later. Maintainer: Eitschman. Automatische Tests verwenden
@@ -19,8 +19,13 @@ der bestehenden Installation konfigurieren: Frische berechtigte Befehle können 
 Hardware schalten.
 
 In OctoPrint **Einstellungen → Plugin Manager → Mehr … → … von URL** öffnen.
-Die genaue Archivadresse aus dem [Beta-Leitfaden](beta-guide.md) einfügen,
-installieren und OctoPrint neu starten. Vorhandene Companion-Einstellungen bleiben
+Diese genaue Archivadresse einfügen, installieren und OctoPrint neu starten:
+
+```text
+https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/archive/refs/tags/0.1.0.zip
+```
+
+Danach muss der Plugin Manager die Version **0.1.0** anzeigen. Vorhandene Companion-Einstellungen bleiben
 bei einem Update erhalten. Danach die installierte Version im Plugin Manager prüfen.
 Vor Updates die OctoPrint-Sicherung verwenden und die zugehörigen Release Notes lesen.
 Stabile Versionen erst installieren, wenn sie auf der

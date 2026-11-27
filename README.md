@@ -3,12 +3,9 @@
 An event-driven OctoPrint companion that exposes the relays configured by
 USB Relay Control through the existing OctoPrint-MQTT connection.
 
-**Stable release candidate: `0.1.0`.**
-The published beta is `0.1.0b1`; stable publication requires final approval.
-Published downloads appear on the [releases page](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases).
-The owner confirms human review and successful installation and testing on real hardware.
-See the [beta guide](docs/public/beta-guide.md), [beta release notes](docs/public/release-notes-0.1.0b1.md)
-and [planned 0.1.0 release notes](docs/public/release-notes-0.1.0.md).
+**Stable release: [0.1.0](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0).**
+The owner confirms human review, successful real-hardware use and installation from
+the public beta URL. See the [release notes](docs/public/release-notes-0.1.0.md).
 Licensed under [AGPL-3.0-or-later](LICENSE). Maintainer: Eitschman.
 Official OctoPrint Plugin Repository registration is pending.
 
@@ -47,7 +44,7 @@ Do not point integration tests at an existing printer or Home Assistant instance
 - [Portable development and tests](docs/public/development.md)
 - [Authorized hardware test plan](docs/public/manual-test-plan.md) · [Development report](docs/public/development-report.md)
 - [Contributing](CONTRIBUTING.md), [support](SUPPORT.md), [security](SECURITY.md), [changelog](CHANGELOG.md)
-- [Screenshots](docs/public/screenshots.md) · [Beta guide](docs/public/beta-guide.md)
+- [Screenshots](docs/public/screenshots.md) · [Release notes](docs/public/release-notes-0.1.0.md)
 - [Upstream notices](THIRD_PARTY_NOTICES.md)
 
 Expose individual channels as binary switches, lights or fans. Integration starts
@@ -87,10 +84,16 @@ drivers and makes no host permission changes.
 
 ## Installation and configuration
 
-After an approved release exists, install its checked ZIP using OctoPrint Plugin
-Manager and restart. For the current local development build use only an isolated
-test instance; see [installation](docs/public/installation.md). Keep a recoverable
-configuration backup before any separately authorized deployment.
+In OctoPrint, open **Settings → Plugin Manager → Get More → from URL** and paste:
+
+```text
+https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/archive/refs/tags/0.1.0.zip
+```
+
+Install, restart OctoPrint and confirm version **0.1.0**. Existing companion settings
+are preserved when upgrading from the beta. Back up the OctoPrint configuration
+before upgrading. See the [English instructions](docs/public/installation.md) or
+[German instructions](docs/public/installation-de.md).
 
 Open **Settings → MQTT for USB Relay Control**, enable integration and select each
 existing channel to expose. Choose a binary Switch, Light or Fan and optional HA name,

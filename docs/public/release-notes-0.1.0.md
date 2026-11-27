@@ -1,7 +1,7 @@
 # MQTT for USB Relay Control 0.1.0
 
-Prepared first stable release; publication requires final approval. Published versions
-appear on the [releases page](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases).
+First stable release, following owner-approved completion of the beta.
+[Download 0.1.0](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0).
 
 Expose USB Relay Control channels as binary Home Assistant MQTT switches, lights or
 fans through the existing OctoPrint-MQTT connection. The companion uses existing relay
@@ -12,7 +12,7 @@ HomeAssistant Discovery device; manual and separate-device overrides are availab
 ## Changes from the beta
 
 No relay behavior changed since `0.1.0b1`. Version metadata and installation documents
-are finalized for stable preparation. The owner reports that installation from the
+are finalized for the stable release. The owner reports that installation from the
 published beta URL works perfectly, following earlier successful real-hardware use.
 Automated tests use synthetic hardware; no external hardware survey is claimed.
 
@@ -27,7 +27,7 @@ OctoPrint-MQTT 0.8.19/0.8.20 with Last Will enabled. Functional automation prima
 covers OctoPrint 2.0.1 on Python 3.11/3.13; regular dependency comparisons additionally
 cover 2.0.2. Read the [compatibility matrix](compatibility.md).
 
-After the stable release appears on the releases page, install this URL through
+Install this URL through
 OctoPrint Settings → Plugin Manager → Get More → from URL, then restart OctoPrint:
 
 ```text

@@ -1,5 +1,8 @@
 # First beta: installation and feedback
 
+The first beta is complete. Use [stable 0.1.0](installation.md) for new installations.
+This page preserves the original beta procedure and download for reference.
+
 [Beta `0.1.0b1`](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0b1) is available as a GitHub prerelease.
 Use the exact tag archive below. Branch snapshots are development sources.
 
