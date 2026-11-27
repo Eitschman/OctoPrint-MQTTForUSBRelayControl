@@ -196,3 +196,17 @@ is `e989bcc3909346e395f1e409cddcd16ca1999fcf`. The feed is RSS 2.0 with an Atom 
 four regressions cover that format, broken XML, missing project entries and incorrect
 JSON document types. Together with metadata and license regressions, the current
 unit/contract suite contains 263 cases per Python/MQTT matrix combination.
+
+## Security audit follow-up — 2026-11-27
+
+The earlier strict host-audit workflow described above is superseded by
+[Plugin security checks](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/workflows/dependency-audit.yml).
+The owner requested a companion-specific gate while retaining all inherited findings.
+Eight regular-installation comparisons cover Python 3.11/3.13, official OctoPrint
+2.0.1/2.0.2 and both supported MQTT versions. Runtime code scanning and real-server
+authorization tests run separately. All additional known findings, scanner errors,
+incomplete indexed-package coverage and baseline version changes fail.
+The [security review](security-review.md) documents source-only project coverage
+limits, hardening, individual host-advisory assessment and remaining release review.
+The historical red audit results above remain evidence of unresolved host findings,
+not the status definition for the new companion gate.

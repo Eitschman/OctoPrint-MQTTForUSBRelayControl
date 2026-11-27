@@ -243,7 +243,9 @@ class RelayRuntime:
             except Exception as error:
                 self.logger.debug("Availability transport unavailable: %s", type(error).__name__)
                 return
-        assert transport is not None
+        if transport is None:
+            self.logger.warning("Availability transport is unavailable")
+            return
         try:
             for topic in sorted(ledger.availability | ledger.retired_availability):
                 if not self._can_submit(epoch, ledger.instance_uuid):
@@ -330,8 +332,13 @@ class RelayRuntime:
             else:
                 mqtt = self._dependency("mqtt").implementation
                 self._dependency("usbrelaycontrol")
-            assert self.adapter is not None and self.registry is not None
-            assert self.transport is not None and self.ledger is not None
+            if (
+                self.adapter is None
+                or self.registry is None
+                or self.transport is None
+                or self.ledger is None
+            ):
+                raise ValueError("Companion dependencies are not bound")
             # LWT errors gate the companion but never change another plugin's settings.
             prefix, lwt = mqtt_requirements(mqtt._settings)
             device, device_source = discovery_device(config, prefix, existing_device)

@@ -1,6 +1,7 @@
 """Reversible instance wrappers; all original hardware operations share one lock."""
 
 import functools
+import logging
 import threading
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -74,8 +75,10 @@ class InstanceAdapter:
     def _diagnose(self, message, error):
         try:
             self.diagnostic(f"{message}: {type(error).__name__}")
-        except Exception:
-            pass
+        except Exception as callback_error:
+            logging.getLogger(__name__).warning(
+                "Diagnostic callback failed: %s", type(callback_error).__name__
+            )
 
     def _wrap(self, obj, name, handler):
         previous = getattr(obj, name)

@@ -124,6 +124,8 @@ for remaining human, hardware, beta and publication gates.
 
 [Plugin quality and registry checks](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/workflows/quality.yml)
 run software tests and the official registry validator/site build. The separate
-[OctoPrint dependency security audit](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/workflows/dependency-audit.yml)
-remains strict and reports inherited host findings. A passing quality run does not
-mean those findings are resolved. See [registry preparation](docs/public/registry.md).
+[Plugin security checks](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/workflows/dependency-audit.yml)
+checks runtime code, authorization and additional known dependency findings against
+the same official host. Inherited host findings remain visible. See the
+[security review](docs/public/security-review.md) for scope and limitations and
+[registry preparation](docs/public/registry.md) for official listing checks.

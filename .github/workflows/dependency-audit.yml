@@ -1,4 +1,4 @@
-name: OctoPrint dependency security audit
+name: Plugin security checks
 on:
   push:
   pull_request:
@@ -8,12 +8,47 @@ on:
 permissions:
   contents: read
 jobs:
-  advisories:
+  runtime-security:
+    name: Runtime code and authorization
+    runs-on: ubuntu-latest
+    env:
+      MOSQUITTO_BINARY: /usr/sbin/mosquitto
+      MOSQUITTO_CONFIG_DIRECTORY: /etc/mosquitto/conf.d/mqtt-relay-security
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+        with:
+          version: '0.10.11'
+          python-version: '3.11'
+      - run: uv sync --locked --group dev
+      - run: uv run python tools/check_security_scan.py
+      - run: uv run python tools/prepare_upstream.py
+      - run: uv run python tools/install_upstream.py --mqtt-version 0.8.20
+      - run: uv run pytest tests/unit/test_security_audit.py tests/unit/test_security_hardening.py tests/unit/test_command_scheduling.py
+      - name: Prepare isolated broker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mosquitto
+          sudo install -d -m 0700 -o "$(id -u)" -g "$(id -g)" "$MOSQUITTO_CONFIG_DIRECTORY"
+      - run: RUN_SERVICE_TESTS=1 uv run pytest tests/integration/test_authorization.py
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: runtime-security-report
+          path: artifacts/security/bandit.json
+          if-no-files-found: error
+          retention-days: 14
+  dependency-comparison:
+    name: Dependency comparison (Python ${{ matrix.python }}, OP ${{ matrix.octoprint }}, MQTT ${{ matrix.mqtt }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         python: ['3.11', '3.13']
+        octoprint: ['2.0.1', '2.0.2']
+        mqtt: ['0.8.19', '0.8.20']
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
@@ -22,5 +57,12 @@ jobs:
         with:
           version: '0.10.11'
           python-version: ${{ matrix.python }}
-      - run: uv sync --locked --group dev
-      - run: uvx --python 3.13 pip-audit==2.10.1 --path '.venv/lib/python${{ matrix.python }}/site-packages' --skip-editable
+      - name: Audit the regular host installation before and after adding the companion
+        run: python tools/security_audit.py --python '${{ matrix.python }}' --octoprint '${{ matrix.octoprint }}' --mqtt '${{ matrix.mqtt }}' --output artifacts/security/comparison
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: dependency-comparison-py${{ matrix.python }}-op${{ matrix.octoprint }}-mqtt${{ matrix.mqtt }}
+          path: artifacts/security/comparison/
+          if-no-files-found: error
+          retention-days: 14

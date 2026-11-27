@@ -2,6 +2,12 @@
 
 ## 0.1.0.dev5 — unreleased
 
+- Add complete runtime security scanning, fail-closed dependency comparisons against
+  regular official host installations, downloadable audit reports and individual
+  assessment of inherited advisories. No extra known findings may be introduced.
+- Replace optimization-dependent runtime assertions with explicit checks. Keep the
+  worker alive when diagnostics fail and log callback failures without error contents.
+
 - Adopt the owner-approved AGPL-3.0-or-later license and maintainer Eitschman.
 - Validate the actual registry template and full site with the unmodified official
   OctoPrint registry tooling. Keep full host dependency audits in a separate strict

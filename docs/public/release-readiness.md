@@ -16,10 +16,13 @@ resolve or explicitly assess dependency advisories, run the complete portable su
 perform the separately authorized hardware plan and inspect clean actual screenshots.
 Rebuild and inspect wheel, sdist and curated ZIP after final changes. Record SHA-256,
 version, source provenance, dependency inventory, checks and remaining limitations.
-The current CI contains no public upload or release job. The official registry checks
-and site build run in the quality workflow; full host dependency audits run strictly
-in their own workflow on pushes, pull requests, a weekly schedule and manual requests.
-That separation is not an advisory waiver or an official acceptance guarantee.
+The current CI contains no public release job. Security reports are retained as
+GitHub Actions artifacts for 14 days. The official registry checks and site build
+run in the quality workflow. The separate security workflow checks runtime code,
+authorization and dependency additions against an identical official host on pushes,
+pull requests, weekly and on demand. All inherited findings remain reported; see
+the [security review](security-review.md) for the exact scope and coverage limits.
+Passing checks are not an official acceptance or host-security guarantee.
 See [registry preparation](registry.md) for the listing and remaining URL/date checks.
 
 ## Beta feedback

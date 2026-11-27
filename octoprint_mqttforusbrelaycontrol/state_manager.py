@@ -1,5 +1,6 @@
 """Bounded command processing and coalesced current-state delivery."""
 
+import logging
 import threading
 from collections import deque
 from dataclasses import asdict, dataclass, field
@@ -172,7 +173,8 @@ class StateManager:
                 self.controls.clear()
                 return (kind, reasons), None
             if kind == "command":
-                assert command_index is not None
+                if command_index is None:
+                    raise RuntimeError("Selected command is unavailable")
                 command = self.commands[command_index]
                 del self.commands[command_index]
                 return (kind, command), None
@@ -220,37 +222,46 @@ class StateManager:
                     self.condition.wait(delay)
                 if not self.running:
                     break
-                assert work is not None
+                if work is None:
+                    raise RuntimeError("Selected worker operation is unavailable")
                 self.busy = True
                 kind, value = work
-                self.active_kind, self.active_started = kind, self.clock()
+                started = self.clock()
+                self.active_kind, self.active_started = kind, started
             try:
                 if kind == "reconcile":
                     self.reconcile(value)
                 elif kind == "command":
-                    assert isinstance(value, Command)
+                    if not isinstance(value, Command):
+                        raise TypeError("Worker command has an invalid type")
                     if self.command_permitted(value):
                         self.execute(value)
                 elif kind == "publish":
-                    assert isinstance(value, dict)
+                    if not isinstance(value, dict):
+                        raise TypeError("Worker publication has an invalid type")
                     if value["epoch"] == self.current_epoch():
                         self.publish(value)
             except Exception as error:
-                self.diagnostic(f"Worker operation failed: {type(error).__name__}")
+                try:
+                    self.diagnostic(f"Worker operation failed: {type(error).__name__}")
+                except Exception as callback_error:
+                    logging.getLogger(__name__).warning(
+                        "Worker diagnostic callback failed: %s", type(callback_error).__name__
+                    )
             finally:
                 with self.condition:
-                    if kind == "command":
-                        assert isinstance(value, Command)
+                    if kind == "command" and isinstance(value, Command):
                         self.last_completed[value.relay_id] = self.clock()
-                    assert self.active_started is not None
-                    self.last_duration = self.clock() - self.active_started
+                    self.last_duration = self.clock() - started
                     self.active_kind = self.active_started = None
                     self.busy = False
                     self.condition.notify_all()
                 try:
                     self.changed()
-                except Exception:
-                    pass
+                except Exception as error:
+                    logging.getLogger(__name__).warning(
+                        "Worker notification callback failed: %s", type(error).__name__
+                    )
 
     def wait_idle(self, timeout=5):
         with self.condition:

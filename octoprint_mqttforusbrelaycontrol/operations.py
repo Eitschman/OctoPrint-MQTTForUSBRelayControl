@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import threading
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -39,8 +40,10 @@ class OperationMonitor:
             )
         try:
             self.diagnostic(message)
-        except Exception:
-            pass
+        except Exception as error:
+            logging.getLogger(__name__).warning(
+                "Hardware diagnostic callback failed: %s", type(error).__name__
+            )
 
     @contextmanager
     def track(self, kind):
