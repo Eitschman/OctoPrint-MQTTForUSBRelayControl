@@ -1,0 +1,363 @@
+#: templates/mqttforusbrelaycontrol_settings.jinja2:21
+msgid ""
+"A hardware call is taking longer than expected. It has not been "
+"cancelled; other hardware access may be waiting."
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:330
+msgid "Actual state differs from requested state"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:45
+msgid "Advanced settings and diagnostics"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:301
+msgid "Available for MQTT"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:59
+msgid ""
+"By default, relays join the device from HomeAssistant Discovery. "
+"Otherwise a separate device uses the MQTT base topic as its name. Uncheck"
+" the option for a separate device, or enter a device identifier to "
+"override the assignment. A custom name also renames a shared device."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:29
+msgid "Channel"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:144
+msgid "Command"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:60
+msgid "Command protection"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:142
+msgid "Configuring"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:4
+msgid "Connect your configured relays to Home Assistant."
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:99
+msgid "Connected"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:344
+msgid ""
+"Create a new identity for this offline clone? Old topics will remain "
+"untouched."
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:114
+msgid "Custom identifier"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:86
+msgid "Debug logging"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:128
+msgid ""
+"Device assignment is active but could not be saved for recovery after "
+"restart."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:71
+msgid "Device assignment source:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:52
+msgid "Device identifier override (optional)"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:124
+msgid ""
+"Device identity could not be read and no saved assignment is available. "
+"Using a separate device."
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:120
+msgid "Device identity could not be read. Keeping the last confirmed assignment."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:51
+msgid "Device name (optional)"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:68
+msgid "Diagnostics"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:101
+msgid "Disconnected"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:16
+msgid "Discovery configurations:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:53
+msgid "Discovery prefix"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:84
+msgid ""
+"Durations are sampled on status updates. Slow hardware calls trigger a "
+"warning after 2 seconds. Hardware is not polled."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:70
+msgid "Effective device identifier:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:10
+msgid "Enable Home Assistant discovery"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:9
+msgid "Enable MQTT integration"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:78
+msgid "Enabled relays:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:36
+msgid "Entity type"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:33
+msgid "Expose relay"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:36
+msgid "Fan"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:75
+msgid "Hardware / current or last duration:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:56
+msgid "Home Assistant birth payload"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:55
+msgid "Home Assistant birth topic"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:35
+msgid "Home Assistant name"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:112
+msgid "HomeAssistant Discovery"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:147
+msgid "Idle"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:107
+msgid "Inactive"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:82
+msgid "Last diagnostic timestamp:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:79
+msgid "Last state synchronization:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:36
+msgid "Light"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:67
+msgid ""
+"MQTT commands wait for the channel interval and expire before execution "
+"when too old. Running hardware calls cannot be cancelled. Original relay "
+"buttons are unaffected."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:3
+msgid "MQTT for USB relays"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:54
+msgid "MQTT prefix (empty uses OctoPrint-MQTT)"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:63
+msgid "Maximum command age (seconds)"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:64
+msgid "Minimum channel interval (seconds)"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:92
+msgid "New identity for offline clone"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:43
+msgid ""
+"No compatible configured relays are available. Configure USB Relay "
+"Control first."
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:277
+#: static/js/mqttforusbrelaycontrol.js:313
+msgid "Off"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:73
+msgid "Oldest queued command:"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:276
+#: static/js/mqttforusbrelaycontrol.js:313
+msgid "On"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:81
+msgid "Pending discovery deletions:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:77
+msgid "Plugin versions:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:80
+msgid "Publish submissions / failures:"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:145
+msgid "Publishing"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:72
+msgid "Queued commands / expired / overflow:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:89
+msgid "Read current states"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:326
+msgid "Read failed:"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:140
+msgid "Reading"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:106
+msgid "Ready"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:305
+msgid "Relay"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:25
+msgid "Relays"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:311
+msgid "Requested:"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:115
+msgid "Separate companion device"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:76
+msgid "Slow hardware operations:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:90
+msgid "Submit discovery"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:91
+msgid "Submit pending deletions"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:338
+msgid "Submit pending discovery deletions? Count:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:36
+msgid "Switch"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:143
+msgid "Synchronizing"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:356
+msgid "The action failed. Check the current prerequisites."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:23
+msgid ""
+"The original relay view model is unavailable or incompatible. Original "
+"button updates cannot be synchronized."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:22
+msgid ""
+"The previous hardware binding could not be safely restored. Restart "
+"OctoPrint before reactivating the integration."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:47
+msgid "Topics and discovery"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:302
+msgid "Unavailable for MQTT"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:102
+#: static/js/mqttforusbrelaycontrol.js:278
+msgid "Unknown"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:96
+msgid ""
+"Use OctoPrint Save or Close for setting changes. Actions operate on saved"
+" settings."
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:50
+msgid "Use existing OctoPrint device when available"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:74
+msgid "Worker / current duration:"
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:322
+msgid "Write failed:"
+msgstr ""
+
+#: templates/mqttforusbrelaycontrol_settings.jinja2:44
+msgid ""
+"Writes are verified by reading the relay controller state. This does not "
+"confirm power at the connected load. Unknown does not mean Off. MQTT "
+"delivery is not guaranteed."
+msgstr ""
+
+#: static/js/mqttforusbrelaycontrol.js:141
+msgid "Writing"
+msgstr ""
+

@@ -1,0 +1,97 @@
+<div class="mqtt-relay-settings">
+    <header class="mqtt-relay-heading">
+        <h3>{{ _('MQTT for USB relays') }}</h3>
+        <p>{{ _('Connect your configured relays to Home Assistant.') }}</p>
+    </header>
+    <section class="mqtt-relay-overview">
+        <div class="mqtt-relay-options">
+            <!-- ko with: configuration -->
+            <label class="checkbox"><input type="checkbox" data-bind="checked: integration_enabled"> {{ _('Enable MQTT integration') }}</label>
+            <label class="checkbox"><input type="checkbox" data-bind="checked: discovery_enabled"> {{ _('Enable Home Assistant discovery') }}</label>
+            <!-- /ko -->
+        </div>
+        <div class="mqtt-relay-health" aria-live="polite">
+            <span class="mqtt-relay-connection" data-bind="css: {'is-connected': status().connected === true}"><span class="mqtt-relay-dot" aria-hidden="true"></span><strong data-bind="text: connectionText"></strong></span>
+            <span data-bind="text: readyText"></span>
+            <span class="mqtt-relay-discovery">{{ _('Discovery configurations:') }} <strong data-bind="text: status().discovery_count"></strong></span>
+        </div>
+    </section>
+    <div class="alert alert-warning" role="status" data-bind="visible: status().last_error, text: status().last_error"></div>
+    <div class="alert alert-warning" role="status" data-bind="visible: deviceWarningText, text: deviceWarningText"></div>
+    <div class="alert alert-warning" role="status" data-bind="visible: (status().hardware || {}).slow">{{ _('A hardware call is taking longer than expected. It has not been cancelled; other hardware access may be waiting.') }}</div>
+    <div class="alert alert-warning" role="status" data-bind="visible: status().restart_required">{{ _('The previous hardware binding could not be safely restored. Restart OctoPrint before reactivating the integration.') }}</div>
+    <div class="alert alert-warning" role="status" data-bind="visible: !frontendCompatible">{{ _('The original relay view model is unavailable or incompatible. Original button updates cannot be synchronized.') }}</div>
+    <div class="alert alert-error" role="alert" data-bind="visible: actionError, text: actionError"></div>
+    <div class="mqtt-relay-section-heading"><h4>{{ _('Relays') }}</h4><span class="mqtt-relay-count" data-bind="text: rows().length"></span></div>
+    <div class="mqtt-relay-list" data-bind="foreach: rows">
+        <section class="mqtt-relay-row">
+            <header class="mqtt-relay-card-heading">
+                <div class="mqtt-relay-card-title"><h5 data-bind="text: $parent.relayName($data)"></h5><div class="mqtt-relay-identity"><code data-bind="text: vendor + ':' + product"></code><span>{{ _('Channel') }} <span data-bind="text: channel"></span></span><span data-bind="text: active_mode"></span></div></div>
+                <span class="mqtt-relay-state" data-bind="text: $parent.stateText($data), attr: {'data-state': $parent.stateKind($data)}"></span>
+            </header>
+            <div class="mqtt-relay-card-body">
+                <div class="mqtt-relay-card-status"><label class="checkbox mqtt-relay-expose"><input type="checkbox" data-bind="checked: enabled"> {{ _('Expose relay') }}</label><small data-bind="text: $parent.availabilityText($data)"></small></div>
+                <div class="mqtt-relay-fields">
+                    <label>{{ _('Home Assistant name') }} <input type="text" maxlength="128" data-bind="value: display_name, attr: {placeholder: original_name}"></label>
+                    <label>{{ _('Entity type') }} <select data-bind="value: entity_type"><option value="switch">{{ _('Switch') }}</option><option value="light">{{ _('Light') }}</option><option value="fan">{{ _('Fan') }}</option></select></label>
+                </div>
+                <small class="mqtt-relay-target" data-bind="visible: $parent.targetText($data), text: $parent.targetText($data)"></small>
+                <p class="mqtt-relay-error" role="status" data-bind="visible: $parent.errorText($data), text: $parent.errorText($data)"></p>
+            </div>
+        </section>
+    </div>
+    <p class="mqtt-relay-empty" data-bind="visible: rows().length === 0">{{ _('No compatible configured relays are available. Configure USB Relay Control first.') }}</p>
+    <p class="mqtt-relay-note">{{ _('Writes are verified by reading the relay controller state. This does not confirm power at the connected load. Unknown does not mean Off. MQTT delivery is not guaranteed.') }}</p>
+    <details class="mqtt-relay-advanced"><summary>{{ _('Advanced settings and diagnostics') }}</summary>
+        <div class="mqtt-relay-advanced-body">
+            <h4>{{ _('Topics and discovery') }}</h4>
+            <div class="mqtt-relay-settings-grid">
+                <!-- ko with: configuration -->
+                <label class="checkbox mqtt-relay-full-width"><input type="checkbox" data-bind="checked: use_octoprint_device"> {{ _('Use existing OctoPrint device when available') }}</label>
+                <label>{{ _('Device name (optional)') }} <input type="text" maxlength="128" data-bind="value: device_name"></label>
+                <label>{{ _('Device identifier override (optional)') }} <input type="text" maxlength="128" data-bind="value: device_identifier"></label>
+                <label>{{ _('Discovery prefix') }} <input type="text" data-bind="value: discovery_prefix"></label>
+                <label class="mqtt-relay-full-width">{{ _('MQTT prefix (empty uses OctoPrint-MQTT)') }} <input type="text" data-bind="value: mqtt_prefix"></label>
+                <label>{{ _('Home Assistant birth topic') }} <input type="text" data-bind="value: ha_birth_topic"></label>
+                <label>{{ _('Home Assistant birth payload') }} <input type="text" maxlength="128" data-bind="value: ha_birth_payload"></label>
+                <!-- /ko -->
+            </div>
+            <p class="mqtt-relay-note">{{ _('By default, relays join the device from HomeAssistant Discovery. Otherwise a separate device uses the MQTT base topic as its name. Uncheck the option for a separate device, or enter a device identifier to override the assignment. A custom name also renames a shared device.') }}</p>
+            <h4>{{ _('Command protection') }}</h4>
+            <div class="mqtt-relay-settings-grid">
+                <!-- ko with: configuration -->
+                <label>{{ _('Maximum command age (seconds)') }} <input type="number" min="1" max="60" step="0.1" required data-bind="value: command_max_age"></label>
+                <label>{{ _('Minimum channel interval (seconds)') }} <input type="number" min="0.1" max="10" step="0.05" required data-bind="value: command_min_interval"></label>
+                <!-- /ko -->
+            </div>
+            <p class="mqtt-relay-note">{{ _('MQTT commands wait for the channel interval and expire before execution when too old. Running hardware calls cannot be cancelled. Original relay buttons are unaffected.') }}</p>
+            <h4>{{ _('Diagnostics') }}</h4>
+            <dl class="mqtt-relay-diagnostics">
+                <dt>{{ _('Effective device identifier:') }}</dt><dd data-bind="text: status().device_identifier || '—'"></dd>
+                <dt>{{ _('Device assignment source:') }}</dt><dd data-bind="text: deviceSourceText"></dd>
+                <dt>{{ _('Queued commands / expired / overflow:') }}</dt><dd data-bind="text: ((status().worker || {}).queued || 0) + ' / ' + ((status().worker || {}).expired || 0) + ' / ' + ((status().worker || {}).overflows || 0)"></dd>
+                <dt>{{ _('Oldest queued command:') }}</dt><dd data-bind="text: durationText((status().worker || {}).oldest_age)"></dd>
+                <dt>{{ _('Worker / current duration:') }}</dt><dd data-bind="text: operationText((status().worker || {}).active) + ' / ' + durationText((status().worker || {}).elapsed)"></dd>
+                <dt>{{ _('Hardware / current or last duration:') }}</dt><dd data-bind="text: operationText((status().hardware || {}).active || (status().hardware || {}).last_kind) + ' / ' + durationText((status().hardware || {}).active ? status().hardware.elapsed : (status().hardware || {}).last_duration)"></dd>
+                <dt>{{ _('Slow hardware operations:') }}</dt><dd data-bind="text: (status().hardware || {}).slow_count || 0"></dd>
+                <dt>{{ _('Plugin versions:') }}</dt><dd data-bind="text: JSON.stringify(status().versions)"></dd>
+                <dt>{{ _('Enabled relays:') }}</dt><dd data-bind="text: status().enabled_count"></dd>
+                <dt>{{ _('Last state synchronization:') }}</dt><dd data-bind="text: status().last_sync ? new Date(status().last_sync * 1000).toLocaleString() : '—'"></dd>
+                <dt>{{ _('Publish submissions / failures:') }}</dt><dd data-bind="text: status().publish_submitted + ' / ' + status().publish_failed"></dd>
+                <dt>{{ _('Pending discovery deletions:') }}</dt><dd data-bind="text: status().pending_deletions"></dd>
+                <dt>{{ _('Last diagnostic timestamp:') }}</dt><dd data-bind="text: status().error_time || '—'"></dd>
+            </dl>
+            <p class="mqtt-relay-note">{{ _('Durations are sampled on status updates. Slow hardware calls trigger a warning after 2 seconds. Hardware is not polled.') }}</p>
+            <!-- ko with: configuration -->
+            <label class="checkbox"><input type="checkbox" data-bind="checked: debug_logging"> {{ _('Debug logging') }}</label>
+            <!-- /ko -->
+            <div class="mqtt-relay-actions">
+                <button type="button" class="btn" data-bind="click: function () { action('resync'); }, disable: busy() || !isAdmin()">{{ _('Read current states') }}</button>
+                <button type="button" class="btn" data-bind="click: function () { action('rediscover'); }, disable: busy() || !isAdmin()">{{ _('Submit discovery') }}</button>
+                <button type="button" class="btn" data-bind="click: function () { action('cleanup'); }, disable: busy() || !isAdmin()">{{ _('Submit pending deletions') }}</button>
+                <button type="button" class="btn mqtt-relay-clone" data-bind="click: function () { action('clone'); }, disable: busy() || !isAdmin() || status().connected !== false">{{ _('New identity for offline clone') }}</button>
+            </div>
+        </div>
+    </details>
+    <p class="mqtt-relay-save-note">{{ _('Use OctoPrint Save or Close for setting changes. Actions operate on saved settings.') }}</p>
+</div>

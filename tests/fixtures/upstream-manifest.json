@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "path": "usbrelay/octoprint_usbrelaycontrol/__init__.py",
+      "url": "https://raw.githubusercontent.com/abudden/OctoPrint-USBRelayControl/0f06bccc06107f2b76fe360fed63698472c483cc/octoprint_usbrelaycontrol/__init__.py",
+      "revision": "0f06bccc06107f2b76fe360fed63698472c483cc",
+      "sha256": "9991a8032711453e6c3e082fc1dde16fc919f79112fc2e52e41d6b20e54d21de"
+    },
+    {
+      "path": "usbrelay/octoprint_usbrelaycontrol/relay.py",
+      "url": "https://raw.githubusercontent.com/abudden/OctoPrint-USBRelayControl/0f06bccc06107f2b76fe360fed63698472c483cc/octoprint_usbrelaycontrol/relay.py",
+      "revision": "0f06bccc06107f2b76fe360fed63698472c483cc",
+      "sha256": "faa1fe1d56103f0fd64459b6bb43a1d745ef8abe4beddbea6e117fa2f0243ca8"
+    },
+    {
+      "path": "usbrelay/octoprint_usbrelaycontrol/static/js/usbrelaycontrol.js",
+      "url": "https://raw.githubusercontent.com/abudden/OctoPrint-USBRelayControl/0f06bccc06107f2b76fe360fed63698472c483cc/octoprint_usbrelaycontrol/static/js/usbrelaycontrol.js",
+      "revision": "0f06bccc06107f2b76fe360fed63698472c483cc",
+      "sha256": "d613fc3a255bba7562c0e3b64c14ca165de53a3ee865ab0f335b93f0a428018a"
+    },
+    {
+      "path": "usbrelay/setup.py",
+      "url": "https://raw.githubusercontent.com/abudden/OctoPrint-USBRelayControl/0f06bccc06107f2b76fe360fed63698472c483cc/setup.py",
+      "revision": "0f06bccc06107f2b76fe360fed63698472c483cc",
+      "sha256": "6b8e890c67b5fe0c6e93688ffe080bca4af5589e23ac022c811110db69b6d42b"
+    },
+    {
+      "path": "usbrelay/LICENCE",
+      "url": "https://raw.githubusercontent.com/abudden/OctoPrint-USBRelayControl/0f06bccc06107f2b76fe360fed63698472c483cc/LICENCE",
+      "revision": "0f06bccc06107f2b76fe360fed63698472c483cc",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "path": "mqtt-0.8.19/octoprint_mqtt/__init__.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint-MQTT/1b111c6ee7d702ecf0fe93cf355f9c97bfc1fb12/octoprint_mqtt/__init__.py",
+      "revision": "1b111c6ee7d702ecf0fe93cf355f9c97bfc1fb12",
+      "sha256": "c159a9140a00fc0bd7a94a3f11574b6fc78aacacdff333431f5e1916b421f88d"
+    },
+    {
+      "path": "mqtt-0.8.19/pyproject.toml",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint-MQTT/1b111c6ee7d702ecf0fe93cf355f9c97bfc1fb12/pyproject.toml",
+      "revision": "1b111c6ee7d702ecf0fe93cf355f9c97bfc1fb12",
+      "sha256": "ce06731883c1c22e0b26ccdb3559fcf478d9fb217f4f5caa1e826ffcd7e0b644"
+    },
+    {
+      "path": "mqtt-0.8.19/setup.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint-MQTT/1b111c6ee7d702ecf0fe93cf355f9c97bfc1fb12/setup.py",
+      "revision": "1b111c6ee7d702ecf0fe93cf355f9c97bfc1fb12",
+      "sha256": "d1f267aac7842092a55e7805dded6c03839b895ab857527908ee1d29a5b40377"
+    },
+    {
+      "path": "mqtt-0.8.19/LICENSE",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint-MQTT/1b111c6ee7d702ecf0fe93cf355f9c97bfc1fb12/LICENSE",
+      "revision": "1b111c6ee7d702ecf0fe93cf355f9c97bfc1fb12",
+      "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6"
+    },
+    {
+      "path": "mqtt-0.8.20/octoprint_mqtt/__init__.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint-MQTT/58065e4514c16b61cdd13220a1534bb4e0adaf78/octoprint_mqtt/__init__.py",
+      "revision": "58065e4514c16b61cdd13220a1534bb4e0adaf78",
+      "sha256": "cbee2f5b85685218aca2a76167bfb7731f163f4e8c2f5248c87fae655dc2ee85"
+    },
+    {
+      "path": "mqtt-0.8.20/pyproject.toml",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint-MQTT/58065e4514c16b61cdd13220a1534bb4e0adaf78/pyproject.toml",
+      "revision": "58065e4514c16b61cdd13220a1534bb4e0adaf78",
+      "sha256": "40511a0af0f505c05748357a20348421ab5b59bd139c63d3a79decc3b18967b5"
+    },
+    {
+      "path": "mqtt-0.8.20/setup.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint-MQTT/58065e4514c16b61cdd13220a1534bb4e0adaf78/setup.py",
+      "revision": "58065e4514c16b61cdd13220a1534bb4e0adaf78",
+      "sha256": "d1f267aac7842092a55e7805dded6c03839b895ab857527908ee1d29a5b40377"
+    },
+    {
+      "path": "mqtt-0.8.20/LICENSE",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint-MQTT/58065e4514c16b61cdd13220a1534bb4e0adaf78/LICENSE",
+      "revision": "58065e4514c16b61cdd13220a1534bb4e0adaf78",
+      "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6"
+    },
+    {
+      "path": "octoprint-2.0.1/src/octoprint/plugin/types.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint/012a92d7f5bffa1c2c059264968283fc578ca985/src/octoprint/plugin/types.py",
+      "revision": "012a92d7f5bffa1c2c059264968283fc578ca985",
+      "sha256": "f104509b778e303b05812417470b2686c6ea53c7329584f99ccc3ee1907ff6c1"
+    },
+    {
+      "path": "octoprint-2.0.1/src/octoprint/plugin/core.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint/012a92d7f5bffa1c2c059264968283fc578ca985/src/octoprint/plugin/core.py",
+      "revision": "012a92d7f5bffa1c2c059264968283fc578ca985",
+      "sha256": "e40348ba0153b3b6fb13c004fb22b46f8612a642e624de8bf45e71ff8762dfe1"
+    },
+    {
+      "path": "octoprint-2.0.1/src/octoprint/server/__init__.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint/012a92d7f5bffa1c2c059264968283fc578ca985/src/octoprint/server/__init__.py",
+      "revision": "012a92d7f5bffa1c2c059264968283fc578ca985",
+      "sha256": "549d50d68a3a7318d5e87de70b3dba514361a93b83f6cec00708ed8bb8b2fcca"
+    },
+    {
+      "path": "octoprint-2.0.1/src/octoprint/plugins/pluginmanager/__init__.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint/012a92d7f5bffa1c2c059264968283fc578ca985/src/octoprint/plugins/pluginmanager/__init__.py",
+      "revision": "012a92d7f5bffa1c2c059264968283fc578ca985",
+      "sha256": "6e4faa24fadd1be1bae4b9040c796c7c69fe0bedd8feb5ba75d4f1e6dfa3a975"
+    },
+    {
+      "path": "octoprint-2.0.1/src/octoprint/server/api/settings.py",
+      "url": "https://raw.githubusercontent.com/OctoPrint/OctoPrint/012a92d7f5bffa1c2c059264968283fc578ca985/src/octoprint/server/api/settings.py",
+      "revision": "012a92d7f5bffa1c2c059264968283fc578ca985",
+      "sha256": "6a94bc959981a5e4d86c4cc2e3b08109ebf556800f4edc16aef8acc0d40659ca"
+    }
+  ]
+}

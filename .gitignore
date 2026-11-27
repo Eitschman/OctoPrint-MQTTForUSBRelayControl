@@ -1,0 +1,30 @@
+# Local Codex launcher and private agent configuration.
+/start-codex.sh
+/AGENTS.md
+/.codex/
+/.agents/
+
+# Private requirements and planning documents.
+/mqtt_for_usbrelay.md
+/veroeffentlichung.md
+/docs/prp/
+/docs/publishing/
+
+# Local environments, credentials and test artifacts.
+/.venv/
+/.env
+/artifacts/
+/.ha/
+
+# Generated development and package files.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+node_modules/

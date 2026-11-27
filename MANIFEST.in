@@ -1,0 +1,21 @@
+include README.md CHANGELOG.md pyproject.toml
+recursive-include octoprint_mqttforusbrelaycontrol *.py *.jinja2 *.js *.css *.mo *.po *.pot
+recursive-include tests *.py *.json
+recursive-include tools *.py
+recursive-include docs/public *.md
+prune artifacts
+prune .venv
+prune .codex
+prune .agents
+prune docs/prp
+prune docs/publishing
+exclude AGENTS.md start-codex.sh mqtt_for_usbrelay.md veroeffentlichung.md
+exclude .env
+recursive-exclude * __pycache__ *.py[cod]
+include CONTRIBUTING.md SUPPORT.md SECURITY.md CODE_OF_CONDUCT.md THIRD_PARTY_NOTICES.md
+include uv.lock package.json pnpm-lock.yaml tsconfig.json eslint.config.js vitest.config.ts playwright.config.ts
+include docs/api-inventory.md
+include docs/architecture.md docs/maintainer-guide.md docs/manual-test-plan.md docs/development-report.md
+recursive-include docs/adr *.md
+recursive-include tests *.ts
+recursive-include .github *.yml *.md
