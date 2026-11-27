@@ -1,9 +1,7 @@
 # First beta: installation and feedback
 
-This guide describes beta `0.1.0b1`. Check the [releases page](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases)
-before installing: use the tag archive below only when that prerelease is listed.
-Before publication the URL returns 404. Do not substitute an unreviewed branch
-snapshot for a published beta.
+[Beta `0.1.0b1`](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0b1) is available as a GitHub prerelease.
+Use the exact tag archive below. Branch snapshots are development sources.
 
 ## Prerequisites
 
@@ -20,7 +18,7 @@ the load. Read the [security review](security-review.md) before choosing a host.
 
 ## Install the approved prerelease
 
-After publication, open OctoPrint Settings → Plugin Manager → Get More → from URL:
+Open OctoPrint Settings → Plugin Manager → Get More → from URL:
 
 ```text
 https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/archive/refs/tags/0.1.0b1.zip

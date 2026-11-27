@@ -8,9 +8,9 @@ Home Assistant captures show the existing synthetic integration test on 2026-11-
 not the owner's installation or a new beta-specific HA test. The HA entities image
 shows the light entity; switch/fan schemas are covered separately by automated tests.
 
-The light overview is the proposed featured image. Each image was visually inspected
-for cropping and private content during preparation. Final publication approval is
-pending. The registry template uses the same seven files.
+The light overview is the featured image. Each image was visually inspected
+for cropping and private content during preparation. The owner approved publication of this image set with beta `0.1.0b1`.
+The registry template uses the same seven files.
 
 ## English settings, light theme
 
