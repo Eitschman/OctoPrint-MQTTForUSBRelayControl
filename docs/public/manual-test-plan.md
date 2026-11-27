@@ -1,6 +1,8 @@
 # Authorized real-device test plan
 
-These tests are **not executed** and require separate hardware/production approval.
+The project owner reports successful use on real hardware. A complete result record
+for H01–H09 is still pending; individual cases are not marked passed from that general
+feedback. Running additional hardware/production tests requires explicit authorization.
 Use an isolated printer and safely rated loads; identify the physical device first.
 Record all software versions, active mode, channel, requested state, observed state,
 readback result and evidence without credentials.

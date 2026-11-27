@@ -3,7 +3,8 @@
 An event-driven OctoPrint companion that exposes the relays configured by
 USB Relay Control through the existing OctoPrint-MQTT connection.
 
-**Development version. No real hardware testing or public release is approved yet.**
+**Development version. The project owner reports successful use on real hardware.**
+The full manual test plan remains to be documented; no public release is available yet.
 The project license, public maintainers and release URLs await owner approval.
 
 The companion uses existing relay objects and MQTT helpers. It never opens USB
@@ -53,8 +54,9 @@ refresh state. Arbitrary untouched hardware faults or external state changes may
 undetected. A filesystem clone must receive a confirmed new offline instance identity
 before MQTT use. See the installation guide for safe cleanup and uninstall behavior.
 
-Development is AI-assisted. Human review and authorized real-device verification are
-release gates, alongside final license, public identity, repository URLs and beta approval.
+Development is AI-assisted. Human review and completion of the formal real-device
+test plan are release gates, alongside final license, public identity, repository URLs
+and beta approval.
 There are no approved public release artifacts or automatic update URLs yet.
 
 ## Architecture and prerequisites

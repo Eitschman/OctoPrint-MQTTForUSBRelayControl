@@ -22,7 +22,11 @@ software tests. Prefer a maintained Python interpreter for deployment.
 
 The matrix establishes software integration, not actual USB timing or physical safety.
 Other USB/MQTT versions are conservatively rejected until their contracts are verified.
-Other OctoPrint versions may be compatible but are not claimed tested. Platforms other
-than the current Linux test host remain untested. No real hardware or production Home
-Assistant test has been performed. See the development report for current schema and
-browser evidence.
+Other OctoPrint versions may be compatible but are not claimed tested. The automated
+matrix above uses Linux and synthetic HID.
+
+The project owner reports successful use of the development builds on real hardware.
+This is practical hardware evidence. The hardware model, complete software versions
+and individual H01–H09 results have not yet been recorded, so no additional platform
+or device compatibility matrix is claimed. See the [manual test plan](manual-test-plan.md)
+for the remaining formal checks and the development report for schema and browser evidence.

@@ -1,7 +1,8 @@
 # Installation and configuration
 
-This is an unreleased development build. License and public identity approval,
-human review and authorized real-hardware testing are still required before release.
+This is an unreleased development build. The project owner reports successful use on
+real hardware. License and public identity approval, human review and completion of
+the formal hardware test plan are still required before public release.
 Do not install it on a production printer as part of the automated tests.
 
 ## Prerequisites

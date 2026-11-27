@@ -1,6 +1,8 @@
 # Release readiness and beta procedure
 
-This development snapshot is locally testable but is not approved for distribution.
+The project owner reports successful use of this development build on real hardware.
+A complete H01–H09 result record is still pending. The private source repository is
+available to its collaborators; public distribution has not been approved.
 Successful tests do not grant a license, establish authorship or authorize publication.
 Run `uv run python tools/check_release_readiness.py`; its current nonzero result is
 intentional. The local approval-evidence JSON must use explicit booleans for license,
@@ -31,8 +33,9 @@ HA device; the HA entities for all three domains; and state agreement after both
 original OctoPrint actions. Narrow-layout and explicit read-failure captures supplement
 these subjects. Capture actual rendered UI with synthetic data, inspect every image
 and provide descriptive English alt text. Local settings and actual HA device/entity
-captures exist. The complete approved seven-image release set and physical-device
-proof remain separate release gates; synthetic HID is not physical-device evidence.
+captures exist. The complete approved seven-image release set and formal H01–H09
+result record remain separate release gates. The owner's successful hardware use is
+recorded in the development report; synthetic HID tests provide software evidence.
 
 ## Updates and retirement
 

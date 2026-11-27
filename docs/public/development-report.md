@@ -1,8 +1,16 @@
 # Development report
 
-Date: 2026-11-26. Initial snapshot: 0.1.0.dev0; current local review build: 0.1.0.dev4.
+Date: 2026-11-27. Initial snapshot: 0.1.0.dev0; current development build: 0.1.0.dev4.
 This code was developed with AI assistance. The following software evidence does not
-substitute for independent human review or authorized physical-device testing.
+substitute for independent human review or the complete physical-device test plan.
+
+## Real-hardware use reported by the project owner
+
+The project owner confirms successful operation of the development builds on their
+real hardware. This practical result is recorded separately from the automated tests,
+which use synthetic HID. A complete record of hardware/software versions and the
+individual H01–H09 observations remains pending; successful everyday use does not
+establish every fault, restart or recovery case in that plan.
 
 ## Current dev4 evidence
 
@@ -18,7 +26,7 @@ An unchanged settings save also restores readiness after invalidation.
 The new browser journey covers command timing Save/Close and light/dark number
 inputs. Three variants are discovered and type-checked. Execution remains pending:
 Chromium startup is denied by the current sandbox, and an attempted HA runtime
-test fails at socket creation with `PermissionError`. No new dev4 real-server,
+test fails at socket creation with `PermissionError`. No new automated dev4 real-server,
 broker, HA runtime, hardware or full clean-environment installation result is
 claimed. The successful installed-server/browser/runtime evidence below is
 historical dev0/dev1 evidence; it does not automatically validate later changes.
@@ -84,11 +92,14 @@ Python 3.9 packages and 14 in two Python 3.13 packages. Repeated advisory IDs ar
 additional distinct vulnerabilities. The Node audit reports no findings. See the
 [dependency review](dependency-review.md); no blanket risk acceptance is claimed.
 
-Physical H01–H09, independent human code/privacy/license review, approved project
-license and public identities, actual update URLs, the approved release image set,
-authorized beta and official registration remain open. The update hook is inactive
-without an approved source. No publication, remote CI run, production change or
-physical relay operation was performed. The release-readiness command deliberately
+A complete physical H01–H09 result record, independent human code/privacy/license
+review, approved project license and public identities, actual update URLs, the
+approved release image set, authorized beta and official registration remain open.
+The update hook is inactive
+without an approved source. The private source repository has been pushed and its
+first GitHub Actions run completed with failures. No public release has been published.
+The automated exercises described here use synthetic hardware; the owner's successful
+physical-device use is recorded above. The release-readiness command deliberately
 rejects this unapproved development snapshot.
 
 ## Review follow-up: 0.1.0.dev1
