@@ -47,9 +47,12 @@ an existing non-empty base directory. No production target is accepted.
 On hosts that restrict broker configuration access, set `MOSQUITTO_CONFIG_DIRECTORY`
 to an empty test directory that Mosquitto may read and the test user may write.
 Each broker creates and removes its own configuration subdirectory there; logs remain
-in the test result directory. CI prepares a dedicated directory under `/etc/mosquitto`
-and selects the apt-installed executable explicitly. No system broker configuration
-is changed and no host confinement is disabled.
+in the test result directory. CI prepares a dedicated directory under
+`/etc/mosquitto/conf.d/mqtt-relay-tests`, which the Ubuntu AppArmor profile permits
+Mosquitto to read recursively, and selects the apt-installed executable explicitly.
+Each configuration is inside its own temporary subdirectory, outside the system
+broker's direct `conf.d/*.conf` selection. No system broker configuration is changed
+and no host confinement is disabled.
 
 ```sh
 RUN_SERVICE_TESTS=1 uv run pytest tests/integration/test_services.py tests/integration/test_authorization.py tests/integration/test_missing_hardware.py

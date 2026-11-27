@@ -174,12 +174,10 @@ async def run_runtime(directory, port):
         await until(lambda: registry.async_get(entity_id).device_id == printer_device_id)
         assert len(entities()) == 3
         assert registry.async_get_entity_id("switch", "mqtt", switch_id) == entity_id
-        assert (
-            device_registry.async_get(hass).devices[printer_device_id].model == "Synthetic printer"
-        )
-        assert device_registry.async_get(hass).devices[printer_device_id].identifiers == {
-            ("mqtt", "ABC123")
-        }
+        printer_device = device_registry.async_get(hass).async_get(printer_device_id)
+        assert printer_device is not None
+        assert printer_device.model == "Synthetic printer"
+        assert printer_device.identifiers == {("mqtt", "ABC123")}
         await publish(switch_topic, json.dumps(switch_payload))
         await until(lambda: registry.async_get(entity_id).device_id == old_device_id)
         assert registry.async_get(printer_entity).device_id == printer_device_id
