@@ -3,9 +3,9 @@
 The dev3 optional **HomeAssistant Discovery** grouping contract reads `node_id` and
 `node_name` from an enabled plugin with identifier `homeassistant`. Legacy six-character
 and newer UUID-hex IDs are preserved exactly. Configuration/serialization regressions
-and Home Assistant 2026.11.3 schemas are tested. A new actual end-to-end device-move
-test is prepared but blocked by the current local socket restrictions; the earlier
-server/browser matrix below does not establish that new dev3 runtime behavior.
+and Home Assistant 2026.11.3 schemas are tested. Actual isolated HA runtime tests now
+verify moving an existing entity to the shared printer device and back, preserving
+its unique ID and the printer's metadata and unrelated entity.
 
 Python minimum: **3.9**. OctoPrint 2.0 warns that Python 3.9 is past upstream Python
 end of life; the user-selected minimum remains supported by this companion's local
@@ -19,6 +19,12 @@ software tests. Prefer a maintained Python interpreter for deployment.
 | 2.0.1 | 3.13.12 | 1.0.0 | 0.8.19 | Installed plugins + real loopback Mosquitto + synthetic HID passed |
 | 1.11.2 | 3.9 | 1.0.0 | 0.8.20 | Tested minimum: installed plugins + real broker + synthetic HID passed |
 | 2.0.2 | 3.9+ | 1.0.0 | 0.8.19/0.8.20 | Newer upstream version, not yet tested |
+
+On 2026-11-27, dev4 passed actual Chromium journeys in English, German and a compact
+viewport, plus a separate read-failure journey. Each project uses a fresh server and
+broker. Eleven Home Assistant checks passed, including nine schemas, device migration
+and the actual HA-to-companion-to-original roundtrip with synthetic hardware.
+The OctoPrint 1.11.2 minimum result remains historical dev0/dev1 evidence.
 
 The matrix establishes software integration, not actual USB timing or physical safety.
 Other USB/MQTT versions are conservatively rejected until their contracts are verified.

@@ -14,8 +14,9 @@ establish every fault, restart or recovery case in that plan.
 
 ## Current dev4 evidence
 
-The current core and pinned upstream contracts pass 244 tests on each of Python
-3.9.25 and 3.13.12, with 91.12% branch-inclusive coverage on 3.9. Ruff, mypy,
+The current core, pinned upstream contracts and test-service diagnostics pass 248 tests
+in every Python/MQTT matrix combination. The local Python 3.13 run has 91.12%
+branch-inclusive coverage; CI enforces at least 85%. Ruff, mypy,
 TypeScript, ESLint, Prettier and five Vitest tests pass. Nine actual Home Assistant
 2026.11.3 schema cases pass. All 83 English UI messages have compiled German
 translations. New tests exercise sustained command/control fairness, command expiry
@@ -23,13 +24,41 @@ including lock waits, independent channel pacing, identity recovery across resta
 cache persistence failure, bounded teardown and live slow-call warning delivery.
 An unchanged settings save also restores readiness after invalidation.
 
-The new browser journey covers command timing Save/Close and light/dark number
-inputs. Three variants are discovered and type-checked. Execution remains pending:
-Chromium startup is denied by the current sandbox, and an attempted HA runtime
-test fails at socket creation with `PermissionError`. No new automated dev4 real-server,
-broker, HA runtime, hardware or full clean-environment installation result is
-claimed. The successful installed-server/browser/runtime evidence below is
-historical dev0/dev1 evidence; it does not automatically validate later changes.
+On 2026-11-27, actual Chromium journeys passed in English, German and a compact
+viewport, including timing Save/Close, device grouping controls and light/dark host
+themes. The separate read-failure journey also passed: four Python integration cases,
+each using its own server and broker. All eleven actual Home Assistant checks passed,
+including nine schemas, device migration to the shared printer and back, and the
+HA-to-companion-to-original roundtrip. A real broker and installed OctoPrint plugins
+also passed four service/authorization/missing-device cases on Python 3.13.
+These exercises use synthetic HID; the owner's real-hardware use is recorded above.
+The initial baseline below remains historical dev0/dev1 evidence.
+
+## CI corrections — 2026-11-27
+
+The first remote runs exposed test-environment and fixture problems:
+
+- Mypy used a fixed Python 3.9 target with Python 3.13 dependencies containing newer
+  syntax. Each matrix job now selects its matching target; Python 3.9 remains checked.
+- Ubuntu's AppArmor profile denied Mosquitto access to generated configurations.
+  CI now places them inside the profile's permitted `conf.d` subtree, in disposable
+  subdirectories, without disabling confinement or changing the system configuration.
+  Early broker exits report the actual startup error instead of a generic timeout.
+- Browser projects shared a server and inherited saved settings. Each language and
+  viewport now starts its own independent server and broker.
+- The HA migration test used deprecated device-registry dictionary indexing. It now
+  uses the registry's supported `async_get` lookup while retaining the same assertions.
+
+Four new regression cases cover broker startup failures, an explicit configuration
+directory, process cleanup and preservation of unrelated files. The strict Python
+dependency audit remains a separate failing gate; no advisory has been waived.
+The repaired [GitHub Actions run](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/runs/45968905277)
+passes all four backend combinations, the browser job and the Home Assistant job.
+Packaging also passes: wheel, sdist and curated ZIP content checks, nine controlled
+contamination counterchecks, fresh installations, entry-point loading, real isolated
+service checks and uninstall without a product-source fallback. All seven functional
+jobs pass; only the two strict Python dependency audits fail with the documented
+host-baseline advisories. The workflow's overall conclusion therefore remains failure.
 
 ## Initial dev0/dev1 implementation and exercises
 
