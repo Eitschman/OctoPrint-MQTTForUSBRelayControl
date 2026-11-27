@@ -7,7 +7,9 @@ USB Relay Control through the existing OctoPrint-MQTT connection.
 The owner confirms human review, successful real-hardware use and installation from
 the public beta URL. See the [release notes](docs/public/release-notes-0.1.0.md).
 Licensed under [AGPL-3.0-or-later](LICENSE). Maintainer: Eitschman.
-Official OctoPrint Plugin Repository registration is pending.
+Official OctoPrint Plugin Repository registration was submitted on 2026-11-27
+in [PR #1523](https://github.com/OctoPrint/plugins.octoprint.org/pull/1523)
+and is awaiting review.
 
 The companion uses existing relay objects and MQTT helpers. It never opens USB
 or a second MQTT connection, polls hardware, changes the original plugin on disk,
@@ -129,7 +131,7 @@ disabled and remove old retained command payloads before enabling the channel.
 Read the [dependency review](docs/public/dependency-review.md) before considering any
 deployment: the fixed upstream test baseline has unresolved advisories. Functional
 compatibility is not a security endorsement. See [release readiness](docs/public/release-readiness.md)
-for remaining human, hardware, beta and publication gates.
+for the recorded release approvals, remaining evidence and future release requirements.
 
 [Plugin quality and registry checks](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/workflows/quality.yml)
 run software tests and the official registry validator/site build. The separate

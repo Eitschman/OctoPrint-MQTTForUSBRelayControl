@@ -1,8 +1,23 @@
 # Development report
 
-Date: 2026-11-27. Initial snapshot: 0.1.0.dev0; current development build: 0.1.0.dev5.
+Date: 2026-11-27. Initial snapshot: 0.1.0.dev0; current stable release: 0.1.0.
 This code was developed with AI assistance. The following software evidence does not
 substitute for independent human review or the complete physical-device test plan.
+
+## Current release and registration status
+
+[Stable 0.1.0](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0)
+was published on 2026-11-27 after owner-approved completion of the public beta.
+The source repository is public and the normal OctoPrint update hook is configured.
+The owner confirms human review and successful real-hardware use; detailed H01–H09
+results and an independent security audit are not claimed.
+
+Official registry registration was submitted in
+[PR #1523](https://github.com/OctoPrint/plugins.octoprint.org/pull/1523).
+As checked on 2026-11-27, the PR is open with the `needs review` label and is in the
+OctoPrint Backlog; review and merge remain pending. See
+[release readiness](release-readiness.md) and [registry status](registry.md).
+The development-stage results below are historical evidence for the named builds.
 
 ## Real-hardware use reported by the project owner
 
@@ -137,24 +152,23 @@ current registry preparation results below.
 - Omit the obsolete optional light discovery `schema: default` field for current HA.
 - Preserve stale-message gates across server reconnects and asynchronous responses.
 
-## Remaining release evidence
+## Remaining evidence and inherited findings
 
-The dedicated strict dependency audit currently reports 14 entries in two packages
-on each of Python 3.11 and 3.13. The former Python 3.9 baseline reported 121 entries
-and is no longer supported. Repeated advisory IDs are not additional distinct
-vulnerabilities. The Node audit reports no findings. See the
+The recorded host dependency audits report 14 entries representing nine distinct
+advisories in two packages on each of Python 3.11 and 3.13. The former Python 3.9
+baseline reported 121 entries and is no longer supported. Repeated advisory IDs are
+not additional distinct vulnerabilities. The recorded Node audit reports no findings. See the
 [dependency review](dependency-review.md); no blanket risk acceptance is claimed.
 
-A complete physical H01–H09 result record, independent human code/privacy/license
-review, actual public release/update URLs, the
-approved release image set, authorized beta and official registration remain open.
-The update hook remains inactive until the public release source is configured.
-The private source repository has been pushed. Current official registry and site
-checks pass; inherited OctoPrint dependency findings remain visible in the separate
-strict audit workflow. No public release has been published.
-The automated exercises described here use synthetic hardware; the owner's successful
-physical-device use is recorded above. The release-readiness command deliberately
-rejects this unapproved development snapshot.
+A complete physical H01–H09 result record and an independent security audit are
+not claimed. Owner-confirmed human review and real-hardware use are recorded above;
+automated exercises use synthetic hardware. Public beta and stable releases and the
+approved screenshot set are documented in [release readiness](release-readiness.md).
+Official registry acceptance remains pending after submission of PR #1523.
+Inherited OctoPrint dependency findings remain visible in the separate plugin security
+workflow; the [security audit follow-up](#security-audit-follow-up--2026-11-27)
+below explains how it supersedes the historical strict host-audit gate.
+Later releases require their own verification and approval.
 
 ## Review follow-up: 0.1.0.dev1
 

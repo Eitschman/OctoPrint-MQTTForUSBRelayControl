@@ -7,7 +7,7 @@ name = "OctoPrint-MQTTForUSBRelayControl"
 dynamic = ["version"]
 readme = "README.md"
 dependencies = ["OctoPrint>=1.11.2"]
-classifiers = ["Framework :: OctoPrint", "Development Status :: 2 - Pre-Alpha", "Programming Language :: Python :: 3"]
+classifiers = ["Framework :: OctoPrint", "Development Status :: 5 - Production/Stable", "Programming Language :: Python :: 3"]
 description = "Event-driven MQTT companion for OctoPrint USB Relay Control"
 license = "AGPL-3.0-or-later"
 license-files = ["LICENSE"]

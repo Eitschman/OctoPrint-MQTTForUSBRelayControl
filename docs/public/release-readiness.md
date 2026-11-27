@@ -7,7 +7,10 @@ AGPL-3.0-or-later and maintainer Eitschman are approved.
 [Beta 0.1.0b1](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0b1) was published on 2026-11-27 from approved commit
 `92953db96a0888a95de20fdadf6f17ddf6a24929`. The owner subsequently approved completion
 of the beta and publication of [stable 0.1.0](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/releases/tag/0.1.0).
-Official registration remains pending.
+Official registration was submitted on 2026-11-27 in
+[PR #1523](https://github.com/OctoPrint/plugins.octoprint.org/pull/1523).
+As checked that day, the PR is open with the `needs review` label; review and merge
+remain pending.
 
 The owner confirms that installation from the public beta URL works perfectly.
 This is owner feedback, not an external compatibility survey.

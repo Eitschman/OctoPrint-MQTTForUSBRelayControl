@@ -1,5 +1,13 @@
 # Official OctoPrint registry preparation
 
+## Submission status
+
+Registration was submitted on 2026-11-27 in
+[PR #1523: Add MQTT for USB Relay Control](https://github.com/OctoPrint/plugins.octoprint.org/pull/1523).
+As checked that day, the PR is open, carries the `needs review` label and has been
+added to the OctoPrint Backlog. No review or merge has occurred yet.
+The preparation and pre-submission checks below document the submission process.
+
 The registration template is [extras/mqttforusbrelaycontrol.md](../../extras/mqttforusbrelaycontrol.md).
 The owner approved AGPL-3.0-or-later and public maintainer Eitschman on 2026-11-27.
 Python 3.11 is the minimum. Package, OctoPrint and registry metadata use the same

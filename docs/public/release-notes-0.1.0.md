@@ -54,4 +54,6 @@ provide ON/OFF control only. Offline discovery cleanup may remain pending.
 
 Use [support](../../SUPPORT.md) for ordinary feedback and
 [private reporting](../../SECURITY.md) for vulnerabilities. Official OctoPrint Plugin
-Repository registration is pending; no security certification is claimed.
+Repository registration was submitted on 2026-11-27 in
+[PR #1523](https://github.com/OctoPrint/plugins.octoprint.org/pull/1523)
+and is awaiting review; no security certification is claimed.
