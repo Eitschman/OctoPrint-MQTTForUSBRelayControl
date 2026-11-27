@@ -12,6 +12,9 @@ The quality workflow uses the official registry revision
 `95c543a6dda048df2a8edca7596e7549e0cb6fcb` from 2026-11-27. The validator and its
 requirements are downloaded from that immutable revision and verified by SHA-256.
 Neither file is patched. Their tools run in a separate Python 3.11 environment.
+The [actual GitHub job](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/runs/45973776098/job/140420338788)
+passed template validation without warnings, full-registry validation, site compilation
+and generated-output checks on 2026-11-27.
 
 The actual project template is checked with the official PR flags:
 

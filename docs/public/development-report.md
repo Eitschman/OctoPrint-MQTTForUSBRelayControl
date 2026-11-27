@@ -122,8 +122,9 @@ a fresh environment from public sources, its entry point loaded, an isolated ser
 started with synthetic and missing hardware, and the plugin uninstalled. The installed
 suite has no product-source fallback and no private agent/configuration dependencies.
 Historical registry-validator tests used checksummed synthetic fixtures and deliberate
-missing metadata/images. The actual project draft remains invalid until the owner
-approves identities, license and real project URLs.
+missing metadata/images. The current actual project template passes the official
+validator and site build with approved license and maintainer metadata; see the
+current registry preparation results below.
 
 ## Runtime findings incorporated
 
@@ -138,17 +139,19 @@ approves identities, license and real project URLs.
 
 ## Remaining release evidence
 
-The strict dependency advisory gate currently fails: 121 advisory entries in nine
-Python 3.9 packages and 14 in two Python 3.13 packages. Repeated advisory IDs are not
-additional distinct vulnerabilities. The Node audit reports no findings. See the
+The dedicated strict dependency audit currently reports 14 entries in two packages
+on each of Python 3.11 and 3.13. The former Python 3.9 baseline reported 121 entries
+and is no longer supported. Repeated advisory IDs are not additional distinct
+vulnerabilities. The Node audit reports no findings. See the
 [dependency review](dependency-review.md); no blanket risk acceptance is claimed.
 
 A complete physical H01–H09 result record, independent human code/privacy/license
 review, actual public release/update URLs, the
 approved release image set, authorized beta and official registration remain open.
-The update hook is inactive
-without an approved source. The private source repository has been pushed and its
-first GitHub Actions run completed with failures. No public release has been published.
+The update hook remains inactive until the public release source is configured.
+The private source repository has been pushed. Current official registry and site
+checks pass; inherited OctoPrint dependency findings remain visible in the separate
+strict audit workflow. No public release has been published.
 The automated exercises described here use synthetic hardware; the owner's successful
 physical-device use is recorded above. The release-readiness command deliberately
 rejects this unapproved development snapshot.
@@ -185,3 +188,11 @@ to its own strict workflow, retaining push/PR execution and adding a weekly sche
 No dependencies are overridden and no advisory is ignored. This does not resolve
 OctoPrint's inherited advisory findings. Release archive availability, registration
 date, screenshots, human review and actual official acceptance remain separate checks.
+
+The [validated official registry job](https://github.com/Eitschman/OctoPrint-MQTTForUSBRelayControl/actions/runs/45973776098/job/140420338788)
+passes actual template validation with zero warnings, full-registry validation,
+unmodified Jekyll compilation and JSON/RSS/project-page checks. The source revision
+is `e989bcc3909346e395f1e409cddcd16ca1999fcf`. The feed is RSS 2.0 with an Atom namespace;
+four regressions cover that format, broken XML, missing project entries and incorrect
+JSON document types. Together with metadata and license regressions, the current
+unit/contract suite contains 263 cases per Python/MQTT matrix combination.
